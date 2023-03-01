@@ -1,0 +1,6 @@
+name: Custom Help
+type: module
+description: Show help pages for admin and users
+package: Custom
+core_version_requirement: ^9 || ^10
+version: '1.0.1'

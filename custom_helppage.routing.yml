@@ -1,0 +1,15 @@
+custom_helppage.adminpage:
+  path: '/admin/adminhelp'
+  defaults:
+    _title: 'Development Help Page'
+    _controller: '\Drupal\custom_helppage\Controller\CustomHelppageController::showAdminHelp'
+  requirements:
+    _permission: 'access custom development help page'
+
+custom_helppage.userpage:
+  path: '/admin/userhelp'
+  defaults:
+    _title: 'Help'
+    _controller: '\Drupal\custom_helppage\Controller\CustomHelppageController::showUserHelp'
+  requirements:
+    _permission: 'access custom user help page'

@@ -1,0 +1,15 @@
+custom_helppage.userpage:
+  title: Help
+  description: 'Hilfe zur Nutzung der Webseite'
+  route_name: custom_helppage.userpage
+  weight: 100
+  parent: system.admin
+
+custom_helppage.adminpage:
+  title: Developer Help
+  description: 'Development Help for Admins'
+  route_name: custom_helppage.adminpage
+  weight: -10
+  parent: custom_helppage.userpage
+
+

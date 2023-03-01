@@ -1,0 +1,8 @@
+access custom development help page:
+  title: 'Access development help page'
+  description: ''
+  restrict access: true
+
+access custom user help page:
+  title: 'Access user help page'
+  description: ''

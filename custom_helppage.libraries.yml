@@ -1,0 +1,6 @@
+# Custom module library for general purposes.
+custom_helppage:
+  version: 1.x
+  css:
+    theme:
+      css/custom-helppage.css: {}

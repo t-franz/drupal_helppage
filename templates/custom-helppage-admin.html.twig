@@ -1,0 +1,391 @@
+{#
+/**
+ * @file
+ * Default theme implementation to display something.
+ *
+ * Available variables:
+ * - host: get url to site
+ * - domain: get domain name
+ * - email: get email
+ * - sitemail: get sitemail
+ * - privatepath: get url of private path
+ * @ingroup themeable
+ */
+#}
+<div class="wrapper-class helppage-admin">
+<p>This file: <code>open /Users/tobbi/Sites/docker/dev/web/modules/custom/custom_helppage/templates/custom-helppage-admin.html.twig</code></p>
+
+
+  <details class="js-form-wrapper form-wrapper claro-details" id="enable-description" data-once="details">
+  <summary aria-controls="enable-description" role="button" aria-expanded="true" class="claro-details__summary" aria-pressed="true">
+    <h3>First Steps</h3>
+  </summary>
+    <div class="claro-details__wrapper">
+      <h4>Blog entfernen:</h4>
+      <ol>
+        <li><input type="checkbox" /><a href="/admin/structure/block/manage/kontakt/delete" target="_blank">Kontakt-Block aus der Sidebar entfernen</a></li>
+        <li><input type="checkbox" /><a href="/admin/content?type=article" target="_blank">Artikel Inhalte löschen</a></li>
+        <li><input type="checkbox" /><a href="/admin/structure/views/view/blog/delete" target="_blank">Views löschen</a></li>
+        <li><input type="checkbox" /><a href="/admin/structure/views/view/content" target="_blank">Views Spalte "Inhaltstyp" entfernen</a><br>
+          Bulk edit anpassen (hervorheben, Startseite)<br>
+          Filterkriterium entfernen</li>
+        <li><input type="checkbox" /><a href="/admin/structure/types/manage/article/delete" target="_blank">Node-Type löschen</a></li>
+        <li><input type="checkbox" />CSS löschen:<br>
+          <code>rm web/themes/custom/fus/css/blog.css && gsed -i '/blog.css/d' web/themes/custom/fus/fus.libraries.yml && open web/themes/custom/fus/fus.libraries.yml</code></li>
+        <li><input type="checkbox" /><a href="/admin/config/search/metatag/node__article/delete" target="_blank">Delete Blog-MetaTags</a></li>
+        <li><input type="checkbox" />Modul Schema.org-Article deinstallieren:<br>
+          <code>drush pm-uninstall schema_article</code></li>
+
+      </ol>
+
+      <h4>Kontaktformular entfernen:</h4>
+      <ol>
+        <li><input type="checkbox" /><a href="/admin/structure/block/manage/contactblock/delete?destination=/node/4" target="_blank">Block entfernen</a></li>
+        <li><input type="checkbox" /><a href="/admin/structure/paragraphs_type/form/delete" target="_blank">Paragraph Formular entfernen</a></li>
+        <li><input type="checkbox" /><a href="/admin/modules/uninstall" target="_blank">Module "Contact Block" "Contact Form Alter", "Contact", "Contact Formatter" und "Antibot" entfernen</a><br />
+        <code>drush pm-uninstall contact contact_block custom_contactformalter contact_formatter antibot && composer remove drupal/contact_block drupal/contact_formatter drupal/antibot</code></li>
+        <li><input type="checkbox" /><a href="/node/3/edit" target="_blank">Datenschutzangaben zum Kontaktformular entfernen</a></li>
+        http://motive.local
+      </ol>
+
+      <h4>Settings:</h4>
+      <ul>
+        <li><input type="checkbox" /><a href="/admin/config/system/site-information" target="_blank">Grundeinstellungen der Webseite</a></li>
+        <li><input type="checkbox" /><a href="/admin/appearance/settings/fus" target="_blank">Logo</a></li>
+      </ul>
+
+      <h4>Design:</h4>
+      <ul>
+        <li><input type="checkbox" />Branding-Block Twig – Add Width/ Height of 2xLogo &amp; 1x Mobile Logo:<br>
+          <code>open web/themes/custom/fus/templates/block--system-branding-block.html.twig</code></li>
+        <li><input type="checkbox" />Check CSS-Variables (Colors, --headeraspectratio) in theme.css<br>
+          <code>open web/themes/custom/fus/css/theme.css</code></li>
+        <li><input type="checkbox" />Favicon anlegen: <a href="https://realfavicongenerator.net" target="_blank">https://realfavicongenerator.net</a></li>
+        <li><input type="checkbox" />Favicon einbinden: <a href="/admin/config/user-interface/responsive_favicons" target="_blank">admin/config/user-interface/responsive_favicons</a></li>
+        <li><input type="checkbox" />Change .htaccess – Comment out line <code>#RewriteCond %{REQUEST_URI} !=/favicon.ico</code></li>
+
+        <li><input type="checkbox" /><a href="https://google-webfonts-helper.herokuapp.com/fonts" target="_blank">Webfont-Helper</a> | <a href="https://www.fontsquirrel.com/tools/webfont-generator" target="_blank">Font-Squirrel</a>
+      </ul>
+    </div>
+  </details>
+
+  <details class="js-form-wrapper form-wrapper claro-details" id="enable-description0" data-once="details">
+    <summary aria-controls="enable-description0" role="button" aria-expanded="true" class="claro-details__summary" aria-pressed="true">
+      <h3>Update to D10</h3>
+    </summary>
+    <div class="claro-details__wrapper">
+      <ul>
+      <li><input type="checkbox" /><strong>Change Template:</strong><br>
+      replace fus.libraries.yaml<br>
+      replace fus.info.yaml<br>
+      add missing templates<br>
+      add css/classy/*.css
+      </li>
+        <li><input type="checkbox" /><a href="/admin/reports/upgrade-status" target="_blank">Check Update Status</a></li>
+        <li><input type="checkbox" /><a href="/admin/reports/upgrade-rector" target="_blank">Upgrade with rector</a> oder:<br>
+        <code>vendor/bin/rector process web/modules/contrib/[YOUR_MODULE] --dry-run</code><br>
+        <code>vendor/bin/rector process web/themes/custom/fus --dry-run</code><br></li>
+        <li><a href="https://www.palantir.net/rector" target="_blank">Palantir Drupal rector</a></li>
+      </ul>
+    </div>
+  </details>
+
+
+
+  <h2>Deployment</h2>
+
+  <details class="js-form-wrapper form-wrapper claro-details" id="enable-description1" data-once="details">
+    <summary aria-controls="enable-description1" role="button" aria-expanded="true" class="claro-details__summary" aria-pressed="true"><h3>Before</h3></summary>
+    <div class="claro-details__wrapper">
+        <ul><li><input type="checkbox" />Favicon checken: <img src="/sites/default/files/favicons/favicon-32x32.png?={{ random() }}" alt="" width="32" height="32"></li>
+          <li><input type="checkbox" />fus.library.yml: remove css/development.css &amp; ggf. blog.css<br>
+          <code>gsed -i '/development.css/d' web/themes/custom/fus/fus.libraries.yml && open web/themes/custom/fus/fus.libraries.yml</code></li>
+          <li><input type="checkbox" />font-display: swap; || optional<br>
+          <code>open web/themes/custom/fus/css/fonts.css</code></li>
+          <li><input type="checkbox" />AutoPrefix CSS</li>
+          <li><input type="checkbox" />Revisionen löschen: <code>drush err:purge</code></li>
+        </ul>
+
+        <ul>
+          <li><input type="checkbox" /><a href="/admin/structure/block/block-content" target="_blank">Check genutzte Blöcke</a></li>
+          <li><input type="checkbox" /><a href="/admin/config/search/custom-company-token" target="_blank">Check Custom Company Tokens</a></li>
+          <li><input type="checkbox" /><a href="/admin/structure/block/manage/mobilecontact" target="_blank">Check Block „Mobile Contact“</a></li>
+          <li><input type="checkbox" /><a href="/admin/config/system/site-information" target="_blank">Check System E-Mail</a>: {{sitemail}}</li>
+          <li><input type="checkbox" /><a href="/admin/structure/contact/manage/side_wide" target="_blank">Check Contactform Mail Settings</a></li>
+          <li><input type="checkbox" /><a href="/admin/config/development/mail_safety/settings" target="_blank">Check Mail Safety Settings</a></li>
+          <li><input type="checkbox" /><a href="/node/4" target="_blank">Test Contact Form ... </a><br><a href="/admin/config/development/mail_safety/1/view" target="_blank">... in Mail Safety</a></li>
+          <li><input type="checkbox" /><a href="/admin/config/development/mail_safety/clear" target="_blank">Clear Mail Safety</a></li>
+          <li><input type="checkbox" /><a href="/node/4/edit" target="_blank">Check Schema Location</a> (Metatag > Open Graph)</li>
+          <li><input type="checkbox" /><a href="/node/1/edit" target="_blank">Check front og:image</a> (Metatag > Open Graph)</li>
+          <li><input type="checkbox" /><a href="/admin/config/search/metatag/settings" target="_blank">Disable unused metatags</a></li>
+          <li><input type="checkbox" /><a href="/admin/content" target="_blank">Inhalte (bis auf 1–4) auf User ändern</a></li>
+          <li><input type="checkbox" /><a href="/node/2" target="_blank">Impressum: Urhebernachweise überprüfen</a>  (Wortkind?!)</li>
+          <li><input type="checkbox" /><a href="/node/3" target="_blank">Datenschutz überprüfen</a> (Adresse, Kontaktformular, Hosting, Shariff)</li>
+          <li><input type="checkbox" /><a href="/admin/structure/views/view/content" target="_blank">Views: Bulk Edit bearbeiten</a></li>
+          <li><input type="checkbox" /><a href="/admin/config/search/redirect" target="_blank">Redirects löschen</a></li>
+          <li><input type="checkbox" /><a href="/admin/content/media" target="_blank">Remove unused Media</a></li>
+          <li><input type="checkbox" /><a href="/admin/reports/auditfiles/managednotused" target="_blank">Audit Files</a></li>
+          <li><input type="checkbox" /><a href="/admin/reports/auditfiles/managednotused" target="_blank">Remove unused files from server</a><br>
+          <code>open web/sites/default/files</code></li>
+          <li><input type="checkbox" /><a href="/admin/content/files" target="_blank">Check files (clear cache)</a></li>
+          <li><input type="checkbox" /><a href="/user/1/edit" target="_blank"><b>Admin-Zugang ändern!</b></a></li>
+          <li><input type="checkbox" /><a href="/user/50/edit" target="_blank">Redaktion ändern</a> (Name, Passwort, {{email}})</li>
+          <li><input type="checkbox" /><a href="/admin/modules/uninstall" target="_blank">Uninstall Modules</a><br>
+              Audit Files, Mail Safety, Devel, Config Delete, Field UI, Views UI, Database Logging, Download Folder<br>
+              Configuration Manager
+          </li>
+          <li><input type="checkbox" /><code>composer remove drupal/auditfiles drupal/mail_safety drupal/devel drupal/config_delete </code></li>
+          <li><input type="checkbox" /><a href="/admin/modules/purge_configurations" target="_blank">Purge Configurations</a></li>
+          <li><input type="checkbox" /><a href="/admin/reports/dblog/confirm" target="_blank" >Clear Database Log</a></li>
+          <li><input type="checkbox" /><a href="/admin/config/development/backup_migrate" target="_blank">Backup</a></li>
+          <li><input type="checkbox" />Check for unused modules:
+            <code>drush pml --no-core --status="disabled,not installed" --type=module</code>
+            <a href="https://www.drupal.org/project/unused_modules">(Drupal Module: Unused Modules)</a></li>
+          <li><input type="checkbox" />Resolve outdated modules: <code>composer outdated --direct</code></li>
+          <li><input type="checkbox" /><a target="_blank" href="https://www.drupal.org/project/fast_404">Migration? Install Fast404</a></li>
+        </ul>
+      </div>
+  </details>
+
+  <details class="js-form-wrapper form-wrapper claro-details" id="enable-description2" data-once="details">
+    <summary aria-controls="enable-description2" role="button" aria-expanded="true" class="claro-details__summary" aria-pressed="true"><h3>Optimierungen</h3></summary>
+    <div class="claro-details__wrapper">
+        <ul>
+          <li><input type="checkbox" />Regex: Find multiline CSS-Comments: \/\*[\s\S]+?\*\/</li>
+          <li><input type="checkbox" />Chrome: CSS / JS Sources Coverage</li>
+          <li><input type="checkbox" />critical.css
+            <br />
+            <a href="https://www.sitelocity.com/critical-path-css-generator">https://www.sitelocity.com/critical-path-css-generator</a>
+            <br />
+            <a href="https://jonassebastianohlsson.com/criticalpathcssgenerator/">https://jonassebastianohlsson.com/criticalpathcssgenerator/</a></li>
+          <li><input type="checkbox" />Minify CSS:
+            <br />
+            <code>cessie theme.css -o theme.convert.css</code>
+            <br />
+            (<a href="https://github.com/bjarneo/cessie#usag">https://github.com/bjarneo/cessie#usag</a>)</li>
+          <li><input type="checkbox" />https://jigsaw.w3.org/css-validator/validator</li>
+          <li><a href="https://www.hashbangcode.com/article/drupal-9-blocking-common-exploit-paths">settings.php -> Fast 404</a></li>
+          <li>settings.php -> enable Fast 404</li>
+          <li><input type="checkbox" />Use Syslog instead of Database Logging</li>
+        </ul>
+        Performance-Module:
+        <ul>
+          <li><a href="https://www.drupal.org/project/views_custom_cache_tag">Views Custom Cache Tag</a></li>
+          <li><a href="https://www.drupal.org/project/filecache">File Cache</a></li>
+          <li><a href="https://www.drupal.org/project/fast_404">Fast 404</a></li>
+          <li><a href="https://www.drupal.org/project/perimeter">Ban bad IPs</a></li>
+          <li><a href="https://www.drupal.org/project/advagg">AdVagg</a></li>
+          <li><a href="https://www.drupal.org/project/responsive_image_preload">Responsive Image Preload</a></li>
+
+        </ul>
+      </div>
+  </details>
+
+
+  <h2>SSH Install</h2>
+    <details class="js-form-wrapper form-wrapper claro-details" id="enable-description3" data-once="details">
+    <summary aria-controls="enable-description3" role="button" aria-expanded="true" class="claro-details__summary" aria-pressed="true"><h3>Local</h3></summary>
+    <div class="claro-details__wrapper">
+      <ul>
+        <li><input type="checkbox" /><code>drush image-flush --all</code></li>
+        <li><input type="checkbox" />Zip folders:<br />
+          <code>find . -name '.DS_Store' -type f -delete && zip -r assets web/modules/custom web/themes patches web/libraries web/sites/default/files -x "**/.DS_Store" -x "**/__MACOSX" -x "**/.zip" -x "web/libraries/superfish" -x "web/sites/default/files/languages/*" -x "web/sites/default/files/php/*" -x "web/sites/default/files/styles/*" -x "**/.ddev"</code></li>
+        <li><input type="checkbox" />Export Database via Drush: <code>drush cr && drush sql-dump --structure-tables-list=cache,cache_* --gzip --result-file=../db-file.sql && open ./</code><br>
+        <a href="http://localhost/phpMyAdmin5/index.php?route=/server/databases">Export Database manually:</a><br />
+          Clear Cache<br />
+          Datenbank auswählen (oben in Reiter!) -&gt;<br />
+          Exportieren -&gt; Angepasst: Speichere Ausgabe in Datei,<br />
+          Komprimierung GZip</li>
+      </ul>
+      <p><small><a href="https://www.drupal.org/node/670460" target="_blank">Using drush to synchronize and deploy sites</a></small></p>
+    </div>
+  </details>
+
+  <details class="js-form-wrapper form-wrapper claro-details" id="enable-description4" data-once="details">
+    <summary aria-controls="enable-description4" role="button" aria-expanded="true" class="claro-details__summary" aria-pressed="true">  <h3>Remote</h3></summary>
+    <div class="claro-details__wrapper">
+    <h4>Remote Setup</h4>
+      <ul>
+        <li><input type="checkbox" />Setup SSH shortcut:<br>
+          <code>open ~/.ssh/config</code></li>
+        <li><input type="checkbox" />iTerm2:<br />
+          Window -&gt; Password-Manager [alt][cmd][F]<br />
+          Preferences [cmd ,] -&gt; Profiles -&gt; Advanced -&gt; Triggers -&gt; Edit (nicht ans Ende!)<br />
+          Password &amp; ggf. subdirectory</li>
+
+        <li><input type="checkbox" />Install Composer in ROOT: <a href="https://getcomposer.org/download/" target="_blank">https://getcomposer.org/download/</a></li>
+        <li><input type="checkbox" /><code>composer require cweagans/composer-patches szeidler/composer-patches-cli:^1.0</code></li>
+        <li><input type="checkbox" /><code>composer require --dev drush/drush</code><br>
+        (Bei WebGo muss dafür die PHP-Version des Servers beim Support umgestellt werden! Siehe E-Mails von support@webgo.de mit Betreff "webgoGmbH")<br>
+        Ggf. <a href="https://raw.githubusercontent.com/drush-ops/drush/8.x/examples/example.drush.ini">drush.ini</a> installieren <a href="https://github.com/drush-ops/drush/issues/3294#issuecomment-370201342">(PHP definieren)</a></li>
+        <li><input type="checkbox" />Edit .bash_profile</br>
+        <code>export LS_OPTIONS='--color=auto'<br>
+          eval "`dircolors`"<br>
+          # Source global definitions<br>
+          if [ -f /home/bashrc ]; then<br>
+                  . /home/bashrc<br>
+          fi<br>
+          # User specific aliases and functions<br>
+          alias php='/usr/bin/php8.1'<br>
+          alias drush='php ./vendor/bin/drush'<br>
+          alias composer='php ~/composer.phar'<br>
+          alias ls='ls -Agoh'<br>
+          # cd www/[Change to SUBDIRECTORY]<br>
+          ls</code></li>
+
+      </ul>
+      <h4>Remote Work</h4>
+      <ul>
+        <li><input type="checkbox" />FTP: Upload assets.zip, composer.json, composer.lock, patches.json<br>
+        <code>scp composer.json composer.lock patches.json assets.zip [SSH-ALIAS]:www/[SUBDIRECTORY]</code>
+        </li>
+        <li>TBD:Create patch-file to allow creation of htaccess-file: https://www.drupal.org/docs/develop/using-composer/using-drupals-composer-scaffold#toc_4 &amp; https://drupal.stackexchange.com/a/300874<br>
+        Alternative: Remove (and afterwards add) <code>"[web-root]/.htaccess": false</code>
+        <li><input type="checkbox" /><code>composer patch-enable --file='patches.json'</code></li>
+        <li><input type="checkbox" />
+          <code>composer install</code><br>
+          <code>composer update -w</code>
+        </li>
+        <li><input type="checkbox" /><code>unzip assets.zip</code> („Replace All“)</li>
+
+        <li><input type="checkbox" />Check Drush: <code>php ./vendor/bin/drush --version</code></li>
+        <li><input type="checkbox" />Change .htaccess -&gt; <code>RewriteBase /</code></li>
+        <li><input type="checkbox" />Ordner anlegen<br />
+          <code>mkdir private config config/sync</code></li>
+        <li><code>rm web/index.html</code></li>
+        <li><input type="checkbox" />Webseite aufrufen, Datenbank eintragen (bis "Drupal ist bereits installiert")</li>
+        <li><input type="checkbox" />Datenbank auswählen -&gt; Importieren<br>
+        Oder via Drush:<br>
+        <code>drush sql-drop -y && drush sqlc < ../db-file.sql</code><br>
+        oder: </li>
+        <li><input type="checkbox" />Settings anpassen: web/sites/default/settings.php<br />
+          506 $settings['<code>file_private_path</code>'] = <code>$app_root . '/../private'</code>;<br />
+          $settings['<code>config_sync_directory</code>'] = <code>$app_root . '/../config/sync'</code>;<br>
+          700 <code>$settings['trusted_host_patterns'] = [
+          '^domain\.de$',
+          '^.+\.domain\.de$',
+          ];</code></li>
+        <li><input type="checkbox" />Updates-Skript aufrufen<br>
+        <code>drush updb</code></li>
+        <li>Local &amp; Remote: <code>rm db-file.sql.gz assets.zip</code></li>
+        {# <li><input type="checkbox" />Settings anpassen: web/sites/default/settings.php<br />
+        $settings['<code>update_free_access</code>'] = <code>FALSE</code>;<br>
+        <code>chmod 777 web/sites/default && nano web/sites/default/settings.php</code><br>
+        [Ctrl][W]<code> update_free_access</code><br>
+        [Ctrl][X]<br>
+        <code>chmod 444 web/sites/default</code></li> #}
+      </ul>
+    </div>
+  </details>
+
+
+  <details class="js-form-wrapper form-wrapper claro-details" id="enable-description5" data-once="details">
+    <summary aria-controls="enable-description5" role="button" aria-expanded="true" class="claro-details__summary" aria-pressed="true"><h3>After</h3></summary>
+    <div class="claro-details__wrapper">
+      <ul>
+        <li><input type="checkbox" /><a href="/admin/config/media/file-system" target="_blank">Check Private Filesystem</a>: <i>{{privatepath}}</i></li>
+        <li><input type="checkbox" /><a href="/admin/config/media/image-toolkit" target="_blank">Check Image Toolkit</a><br>
+        <code>/usr/bin/</code><br>
+        <code>/opt/RZmagick/bin/</code> (Strato)</li>
+        <li>Run Cron: <code>drush cron</code></li>
+        <li><input type="checkbox" /><a href="/admin/reports/status" target="_blank">Check Status</a></li>
+        <li><input type="checkbox" /><a href="/admin/reports/updates" target="_blank">Auf Aktualisierungen prüfen</a></li>
+        <li><input type="checkbox" /><a href="/admin/reports/updates/settings" target="_blank">Einstellungen für Aktualisierungen prüfen</a></li>
+        <li><input type="checkbox" /><a href="/admin/config/development/performance" target="_blank">Leistung</a></li>
+        <li><input type="checkbox" /><a href="/admin/config/development/logging" target="_blank">Fehlermeldungen</a></li>
+        <li><a href="/admin/config/system/cron" target="_blank">Cronjob extern anlegen</a><br>
+        Webgo: Paketverwaltung -> CronJobs Light</li>
+      </ul>
+
+      <ul>
+          <li><input type="checkbox" />htaccess: Redirect &amp; GZip<br>
+            <code>open web/core/assets/scaffold/files/htaccess</code></li>
+          <li><input type="checkbox" />htaccess redirect to https:<br>
+            <code>RewriteCond %{HTTPS} !=on</code><br>
+            <code>RewriteRule ^ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]</code></li>
+      </ul>
+
+
+      <h3>Check Privacy</h3>
+      <ul>
+        <li><input type="checkbox" />SSL-Zertifikat</li>
+        <li><input type="checkbox" /><a href="/node/3" target="_blank">Datenschutzerklärung</a> mit Kontakt</li>
+        <li><input type="checkbox" /><a href="/node/2" target="_blank">Impressum</a> mit Unternehmerangaben</li>
+        <li><input type="checkbox" />Datenschutzhinweise auch mobil erreichbar</li>
+        <li><input type="checkbox" />Formulare DSGVO-konform</li>
+        <li><input type="checkbox" />Hinweise im Cookie-Banner</li>
+        <li><input type="checkbox" />Widerspruch für Cookies</li>
+      </ul>
+
+      <h3>Google Search Console</h3>
+      <ul>
+      <li><a href="https://search.google.com/search-console" target="_blank">Search Console</a><br>
+      <code>sitemap.xml</code></li>
+      </ul>
+    </div>
+  </details>
+
+    <details class="js-form-wrapper form-wrapper claro-details" id="enable-description6" data-once="details">
+    <summary aria-controls="enable-description6" role="button" aria-expanded="true" class="claro-details__summary" aria-pressed="true"><h3>Module</h3></summary>
+    <div>
+    <ul>
+      <li><a href="https://www.drupal.org/project/lunr">Lunr Search</a></li>
+    </ul>
+    </div>
+  </details>
+
+
+
+  <details class="js-form-wrapper form-wrapper claro-details" id="enable-description7" data-once="details">
+    <summary aria-controls="enable-description7" role="button" aria-expanded="true" class="claro-details__summary" aria-pressed="true"><h3>E-Mail</h3></summary>
+    <div class="claro-details__wrapper">
+        <code>
+          <p>
+            Ihre neue Webseite ist online:<br>
+            {{host}}
+          </p>
+          <p>Ich habe Ihnen einen Zugang auf Ihrer neuen Webseite eingerichtet, damit Sie ggf. die Möglichkeit haben, Inhalte selbstständig zu ändern:</p>
+          <p>ZUGANGSDATEN:</p>
+          <p>
+            Login-Seite (oder ganz am Ende der Seite auf „Anmelden“ klicken):<br>
+            {{host}}/user/login<br>
+            Benutzername:	XXXXX<br>
+            Passwort:	XXXXXX<br>
+          </p>
+          <p>
+            Die hinterlegte E-Mail-Adresse des Benutzerkontos ist:<br>
+            {{email}}
+          </p>
+          <p>
+            Nach der Anmeldung kann das Passwort bei Bedarf geändert werden.<br>
+            Klicken Sie dafür nach der Anmeldung im schwarz hinterlegten Administrations-Menü ganz am oberen Rand auf Ihren Namen und danach auf „Profil bearbeiten“. Dort können Sie das Passwort und die hinterlegte E-Mail-Adresse ändern.
+            Oder direkt:<br>
+            {{host}}/user/50/edit
+          </p>
+          <p>
+            Passwort irgendwann vergessen?<br>
+            Klicken Sie auf der Login-Seite (s.o.) auf "Passwort zurücksetzen“ und folgen Sie dann den Anweisungen.
+          </p>
+          <p>
+            Nach der Anmeldung finden Sie online eine kurze Einführung zu Ihrer Webseite.<br>
+            Klicken Sie dafür ganz oben im schwarz hinterlegten Menü auf „Verwalten“ und danach eine Zeile darunter ganz rechts auf „Hilfe“.<br>
+            Oder klicken Sie nach der Anmeldung direkt auf diesen Link:<br>
+            {{host}}/admin/userhelp
+          </p>
+        </code>
+      </div>
+  </details>
+
+
+  <details class="js-form-wrapper form-wrapper claro-details" id="enable-description8" data-once="details">
+    <summary aria-controls="enable-description8" role="button" aria-expanded="true" class="claro-details__summary" aria-pressed="true"><h3>Privacy</h3></summary>
+    <div class="claro-details__wrapper">
+        <ul>
+          <li><a href="https://www.drupal.org/project/cookies/">COOKiES Consent Management</a></li>
+          <li><a href="https://www.drupal.org/project/cookie_content_blocke">Cookie Content Blocker</a></li>
+          <li><a href="https://www.drupal.org/project/gdpr_video">GDPR for YouTube and Vimeo</a></li>
+      </div>
+  </details>
+
+
+</div> <!-- .wrapper-class -->

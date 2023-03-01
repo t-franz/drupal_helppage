@@ -1,0 +1,120 @@
+{#
+/**
+ * @file
+ * Default theme implementation to display something.
+ *
+ * Available variables:
+ * - blog: Boolean if user can create blog article
+ * - modulepath: get url to module (without trailing slash)
+ * - blockedit: Boolean if user can edit blocks
+ * - host: get url to site
+ * @ingroup themeable
+ */
+#}
+<div class="wrapper-class helppage-user">
+
+  <h2>Inhalte administrieren</h2>
+
+  <details class="js-form-wrapper form-wrapper claro-details" id="enable-description1" data-once="details">
+    <summary aria-controls="enable-description1" role="button" aria-expanded="true" class="claro-details__summary" aria-pressed="true"><h3>Erste Schritte</h3></summary>
+    <div class="claro-details__wrapper">
+      <p>Nach der Anmeldung auf der Webseite öffnet sich in der Regel die Übersichtsseite für die Inhalte.<br />
+      Auf dieser Übersicht kann jederzeit über das schwarz hinterlegte Menü "Verwalten" -&gt; "Inhalt" zugegriffen werden.<br />
+      Oder direkt: <a href="/admin/content">{{host}}/admin/content</a></p>
+      {% if blockedit %}
+      <p>Diese Übersicht teilt sich in drei Bereiche mit den Menü-Reitern "Inhalt", "Blöcke" und "Medien" auf.</p>
+      {% else %}
+      <p>Diese Übersicht teilt sich in zwei Bereiche mit den Menü-Reitern "Inhalt" und "Medien" auf.</p>
+      {% endif %}
+
+      <p>"Inhalt" listet alle Seiten auf, welche auch Webseiten-Besucher:innen über den Browser per URL erreichen können.<br />
+      "Einfache Seiten" sind Seiten, welche sich in der Regel über das Hauptmenü erreichen lassen.
+      {% if blog %}
+        <br />
+        "Blog-Artikel" sind alle Seiten, welche u.a. auf der Seite <a href="/mein-blog">{{host}}/mein-blog</a> aufgelistet werden.
+      {% endif %}
+      <br />Der Bereich "<a href="/admin/content/media">Medien</a>" listet alle Bilder auf. Diese können auch dort ggf. ausgetauscht und geändert werden.</p>
+
+      {% if blockedit %}
+      <p>"<a href="/admin/content/block-content">Blöcke</a>" sind einzelne Inhalte, welche unabhängig vom Seiteninhalt zum grundsätzlichen Layout der Webseite gehören, z.B. die Kontakthinweise am Seitenende (welche Sie bei Bedarf auch direkt hier ändern können: <a href="/block/4">{{host}}/block/4</a>).</p>
+      {% endif %}
+
+    </div>
+  </details>
+
+  <details class="js-form-wrapper form-wrapper claro-details" id="enable-description2" data-once="details">
+    <summary aria-controls="enable-description2" role="button" aria-expanded="true" class="claro-details__summary" aria-pressed="true">
+      <h3>Adressdaten ändern</h3>
+    </summary>
+    <div class="claro-details__wrapper">
+    <p>
+      Unter anderem auf den Seiten <a href="/node/4">Kontakt</a>, <a href="/node/2">Impressum</a> und <a href="/node/3">Datenschutz</a>, dem Block <a href="/block/4">Kontaktaufnahme</a> am unteren Ende der Webseite und im Quelltext der Webseite werden Ihre Kontaktdaten veröffentlicht.<br/>
+      Damit überall die gleichen Daten hinterlegt sind, greifen alle diese Seiten auf einen gemeinsamen Datensatz zurück, welcher auf der Seite "<a href="/admin/config/search/custom-company-token">Einstellungen der Adressdaten</a>" hinterlegt ist. Diese Seite finden Sie auch über das Hauptmenü unter "Verwalten > Konfguration > Suche und Metadaten > Adressdaten".
+    </p>
+    <p>Wenn Sie die Texte der genannten Seiten bearbeiten, werden Sie feststellen, dass dort statt der sichtbaren Adressdaten lediglich "Tokens" ("Ersetzungsmuster") in der Form <i>[company:name]</i> eingefügt sind. Diese Token werden beim Aufrufen der Webseite durch die entsprechenden Datensätze ausgetauscht. Wenn Sie also auf der Seite "<a href="/admin/config/search/custom-company-token">Eigene Firmen-Tokens</a>" die Daten ändern, ändern Sie damit auch automatisch alle Angaben auf den anderen (s.o.) Stellen der Webseite.</p>
+    </div>
+  </details>
+
+<details class="js-form-wrapper form-wrapper claro-details" id="enable-description3" data-once="details">
+  <summary aria-controls="enable-description3" role="button" aria-expanded="true" class="claro-details__summary" aria-pressed="true"><h3>Seiten hinzufügen</h3></summary>
+    <div class="claro-details__wrapper">
+      <p>Sie haben mehrere Möglichkeiten, um neue Seiten hinzuzufügen:</p>
+      <ul>
+        <li>Auf der Übersichtsseite aller Inhalte (<a href="/admin/content">{{host}}/admin/content</a>) klicken Sie oben auf den blauen Button "<a href="/node/add">+ Inhalt hinzufügen</a>" und wählen danach den gewünschten Seiten-Typ aus.</li>
+        <li>Oder Sie gehen mit der Mouse über das Menü "Inhalt" und danach "Inhalt hinzufügen" und wählen dort den gewünschten Seiten-Typ aus.</li>
+      </ul>
+      <p>In beiden Fällen öffnet sich ein neues Fenster zum Erstellen einer neuen Seite.</p>
+    </div>
+  </details>
+
+  <details class="js-form-wrapper form-wrapper claro-details" id="enable-description4" data-once="details">
+    <summary aria-controls="enable-description4" role="button" aria-expanded="true" class="claro-details__summary" aria-pressed="true"><h3>Seiten und Inhalte bearbeiten</h3></summary>
+    <div class="claro-details__wrapper">
+      <ul>
+        <li>Auf der Übersichtsseite aller Inhalte (<a href="/admin/content">{{host}}/admin/content</a>) klicken Sie rechts in der Zeile der zu bearbeitenden Seite auf den Button "Bearbeiten".</li>
+        <li>Alternativ kann jeder Inhalt auch direkt auf der entsprechenden Seite zum Bearbeiten geöffnet werden: Wird zum Beispiel die Seite <a href="/node/2">Impressum</a> im Browser aufgerufen, dann erscheint unterhalb des Seitentitels ein Menü "Ansicht | Bearbeiten | Löschen". Bei Klick auf "Bearbeiten" öffnet sich das Formular zum Bearbeiten des Textes.</li>
+        <li>Eine weitere Alternative (auch zum <strong>Bearbeiten weiterer Inhalte</strong>): Wenn Sie eine Seite Ihrer Webseite im Browser zur Ansicht geöffnet haben, dann erscheint ganz oben rechts im schwarz hinterlegten Menü nach einem Klick auf "Bearbeiten" (neben dem Stift-Symbol) auch ein kleines rundes Stift-Symbol rechts oberhalb aller editierbaren Inhalte (auch z.B. der Menüpunkte oder der Texte am Ende der Webseite). Bei Klick auf das jeweilige Stift-Symbol und Auswahl von "Bearbeiten" öffnet sich das Formular zum Bearbeiten des ausgewählten Inhalts.</li>
+      </ul>
+
+      <p>Nach jeder gewünschten Änderungen nicht vergessen, am Ende der jeweiligen Formular-Seite auf "Speichern" zu klicken. Ansonsten die Seite einfach irgendwie verlassen, um die Änderungen zu verwerfen.</p>
+    </div>
+  </details>
+
+  <details class="js-form-wrapper form-wrapper claro-details" id="enable-description5" data-once="details">
+    <summary aria-controls="enable-description5" role="button" aria-expanded="true" class="claro-details__summary" aria-pressed="true"><h3>Beispiel Textänderung</h3></summary>
+    <div class="claro-details__wrapper">
+      <p>Sagen wir mal, Sie wollen Ihre Kontaktseite bearbeiten – dafür gehen Sie zum Beispiel wie folgt vor:</p>
+      <ul>
+        <li>Auf der Übersichtsseite aller Inhalte (<a href="/admin/content">{{host}}/admin/content</a>) klicken Sie rechts neben der Seite "Kontakt" (der Titel kann auch anders sein) auf den Button "Bearbeiten".</li>
+        <li>Oder Sie rufen die Seite in Ihrem Browser auf (<a href="/node/4">{{host}}/kontakt</a>) und klicken dann auf "Bearbeiten" unterhalb der Überschrift.</li>
+      </ul>
+      <p>Es öffnet sich in beiden Fällen das Formular zum Bearbeiten der Textseite. (<a href="/node/4/edit">{{host}}/node/4/edit</a>)</p>
+      <p>Vergessen Sie nicht ganz am Ende der Seite auf den blauen Button "Speichern" zu klicken – nur dann werden die Änderungen auch übernommen!</p>
+    </div>
+  </details>
+
+  {% if blog %}
+  <details class="js-form-wrapper form-wrapper claro-details" id="enable-description6" data-once="details">
+    <summary aria-controls="enable-description6" role="button" aria-expanded="true" class="claro-details__summary" aria-pressed="true"><h3>Beispiel neue Blog-Seite</h3></summary>
+    <div class="claro-details__wrapper">
+      <ul>
+        <li>Auf der Übersichtsseite aller Inhalte (<a href="/admin/content">{{host}}/admin/content</a>) klicken Sie auf den blauen Button "+ Inhalt hinzufügen" und wählen danach "Blog Artikel" aus.</li>
+        <li>Oder Sie gehen mit der Mouse über das Menü "Inhalt" und danach "Inhalt hinzufügen" und "BlogArtikel".</li>
+      </ul>
+      <p>In beiden Fällen öffnet sich ein neues Fenster zum Erstellen eines neuen Blog-Artikel.</p>
+    </div>
+  </details>
+  {% endif %}
+
+{#   <details class="js-form-wrapper form-wrapper claro-details" data-once="details">
+    <summary aria-controls="enable-description" role="button" aria-expanded="true" class="claro-details__summary" aria-pressed="true">
+      <h3>HEADLINE</h3>
+    </summary>
+    <div class="claro-details__wrapper">
+    CONTENT
+    </div>
+  </details> #}
+
+
+  {# ToDo: Bilder hinzufügen, Hervorhebungsoptionen #}
+</div>

@@ -1,0 +1,56 @@
+<?php
+
+/**
+ * @file
+ * Primary module hooks for Custom Help module.
+ */
+
+/**
+ * Implements hook_theme().
+ */
+function custom_helppage_theme() {
+
+  // List Entity-Types
+  // https://www.hashbangcode.com/article/drupal-9-get-list-content-types
+  $entityTypeManager = \Drupal::service('entity_type.manager');
+  $types = [];
+  $contentTypes = $entityTypeManager->getStorage('node_type')->loadMultiple();
+  foreach ($contentTypes as $contentType) {
+    $types[$contentType->id()] = $contentType->label();
+  }
+
+  $modulepath = \Drupal::service('extension.list.module')->getPath('custom_helppage');
+  $blog = (array_key_exists("article", $types) && \Drupal::currentUser()->hasPermission('create article content'));
+  $book = (array_key_exists("book", $types) && \Drupal::currentUser()->hasPermission('create book content'));
+  $blockedit = \Drupal::currentUser()->hasPermission('update any paragraphs block content');
+  $host = \Drupal::request()->getSchemeAndHttpHost();
+  $company_mail = \Drupal::config('custom_company_token.settings')->get('mail');
+  $site_mail = \Drupal::config('system.site')->get('mail');
+  $private = \Drupal::service('file_system')->realpath("private://");
+  //  for images
+
+  return [
+    'custom-helppage-user' => [
+      'variables' => [
+      'blog' => $blog,
+      'blockedit' => $blockedit,
+      'host' => $host,
+      'modulepath' => $modulepath
+    ],],
+    'custom-helppage-admin' => [
+      'variables' => [
+        'host' => $host,
+        'email' => $company_mail,
+        'sitemail' => $site_mail,
+        'privatepath' => $private,
+        'domain' => str_replace('http://','',$GLOBALS['base_url']),
+      ],],
+  ];
+}
+
+function custom_helppage_preprocess_page(&$variables) {
+  $current_path = \Drupal::request()->getRequestUri();
+  if ($current_path == '/admin/config/adminhelp' || $current_path == '/admin/userhelp'){
+    $variables['#attached']['library'][] = 'custom_helppage/custom_helppage';
+  }
+}
