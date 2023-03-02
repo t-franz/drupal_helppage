@@ -1,10 +1,18 @@
 {
   "name": "t-franz/custom_helppage",
-  "type": "drupal-module",
+  "description": "This is a very simple module to add pages with additional help for users",
+  "type": "drupal-custom-module",
+  "license": "GPL-2.0+",
+  "minimum-stability": "dev",
+  "homepage": "https://github.com/t-franz/drupal_helppage.git",
   "authors": [
       {
-          "name": "Tobias Franz"
+          "name": "Tobias Franz",
+          "homepage": "https://www.drupal.org/u/tfranz",
+          "role": "Maintainer"
       }
   ],
-  "require": {}
+  "require": {
+    "drupal/core": "^9.2"
+  }
 }
