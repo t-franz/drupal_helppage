@@ -8,6 +8,8 @@
  * - modulepath: get url to module (without trailing slash)
  * - blockedit: Boolean if user can edit blocks
  * - host: get url to site
+ * - assets: get url to modules assets files (without trailing slash)
+ * - publicfiles: get url to publicfiles /sites/default/files/helppage
  * @ingroup themeable
  */
 #}
@@ -72,8 +74,12 @@
     <div class="claro-details__wrapper">
       <ul>
         <li>Auf der Übersichtsseite aller Inhalte (<a href="/admin/content">{{host}}/admin/content</a>) klicken Sie rechts in der Zeile der zu bearbeitenden Seite auf den Button "Bearbeiten".</li>
-        <li>Alternativ kann jeder Inhalt auch direkt auf der entsprechenden Seite zum Bearbeiten geöffnet werden: Wird zum Beispiel die Seite <a href="/node/2">Impressum</a> im Browser aufgerufen, dann erscheint unterhalb des Seitentitels ein Menü "Ansicht | Bearbeiten | Löschen". Bei Klick auf "Bearbeiten" öffnet sich das Formular zum Bearbeiten des Textes.</li>
-        <li>Eine weitere Alternative (auch zum <strong>Bearbeiten weiterer Inhalte</strong>): Wenn Sie eine Seite Ihrer Webseite im Browser zur Ansicht geöffnet haben, dann erscheint ganz oben rechts im schwarz hinterlegten Menü nach einem Klick auf "Bearbeiten" (neben dem Stift-Symbol) auch ein kleines rundes Stift-Symbol rechts oberhalb aller editierbaren Inhalte (auch z.B. der Menüpunkte oder der Texte am Ende der Webseite). Bei Klick auf das jeweilige Stift-Symbol und Auswahl von "Bearbeiten" öffnet sich das Formular zum Bearbeiten des ausgewählten Inhalts.</li>
+
+        <li>Alternativ kann jeder Inhalt auch direkt auf der entsprechenden Seite zum Bearbeiten geöffnet werden: Wird zum Beispiel die Seite <a href="/node/2">Impressum</a> im Browser aufgerufen, dann erscheint in der Nähe des Seitentitels ein Menü "Ansicht | Bearbeiten | Löschen". Bei Klick auf "Bearbeiten" öffnet sich das Formular zum Bearbeiten des Textes.</li>
+
+        <li>Eine weitere Alternative (auch zum <strong>Bearbeiten weiterer Inhalte</strong>): Wenn Sie eine Seite Ihrer Webseite im Browser zur Ansicht geöffnet haben, dann erscheint ganz oben rechts im schwarz hinterlegten Menü nach einem Klick auf "Bearbeiten" (neben dem Stift-Symbol) auch ein kleines rundes Stift-Symbol rechts oberhalb aller editierbaren Inhalte (auch z.B. der Menüpunkte oder der Texte am Ende der Webseite).<br>
+        <img src="{{assets}}/edit-button.png" alt="Bearbeiten-Button" width="460" height="267"><br>
+        Bei Klick auf das jeweilige Stift-Symbol und Auswahl von "Bearbeiten" öffnet sich das Formular zum Bearbeiten des ausgewählten Inhalts.</li>
       </ul>
 
       <p>Nach jeder gewünschten Änderungen nicht vergessen, am Ende der jeweiligen Formular-Seite auf "Speichern" zu klicken. Ansonsten die Seite einfach irgendwie verlassen, um die Änderungen zu verwerfen.</p>

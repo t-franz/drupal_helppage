@@ -19,6 +19,9 @@ function custom_helppage_theme() {
     $types[$contentType->id()] = $contentType->label();
   }
 
+  // $paragraphs = ParagraphsType::loadMultiple();
+  // $accordion = array_key_exists("accordion", $paragraphs);
+
   $modulepath = \Drupal::service('extension.list.module')->getPath('custom_helppage');
   $blog = (array_key_exists("article", $types) && \Drupal::currentUser()->hasPermission('create article content'));
   $book = (array_key_exists("book", $types) && \Drupal::currentUser()->hasPermission('create book content'));
@@ -27,7 +30,8 @@ function custom_helppage_theme() {
   $company_mail = \Drupal::config('custom_company_token.settings')->get('mail');
   $site_mail = \Drupal::config('system.site')->get('mail');
   $private = \Drupal::service('file_system')->realpath("private://");
-  //  for images
+  $assets = $modulepath.'/assets';
+  $publicfiles = '/sites/default/files/helppage';
 
   return [
     'custom-helppage-user' => [
@@ -35,7 +39,9 @@ function custom_helppage_theme() {
       'blog' => $blog,
       'blockedit' => $blockedit,
       'host' => $host,
-      'modulepath' => $modulepath
+      'modulepath' => $modulepath,
+      'assets' => $assets,
+      'publicfiles' => $publicfiles,
     ],],
     'custom-helppage-admin' => [
       'variables' => [
@@ -50,7 +56,7 @@ function custom_helppage_theme() {
 
 function custom_helppage_preprocess_page(&$variables) {
   $current_path = \Drupal::request()->getRequestUri();
-  if ($current_path == '/admin/config/adminhelp' || $current_path == '/admin/userhelp'){
+  if ($current_path == '/admin/adminhelp' || $current_path == '/admin/userhelp'){
     $variables['#attached']['library'][] = 'custom_helppage/custom_helppage';
   }
 }

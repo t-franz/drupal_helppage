@@ -96,23 +96,39 @@
     </summary>
     <div class="claro-details__wrapper">
       <ul>
-        <li>Add repository to composer.json<br>
-        <code>"repositories": [
-        {
-            "type": "composer",
-            "url": "https://packages.drupal.org/8"
-        },
-        {
-            "type": "git",
-            "url": "https://github.com/t-franz/[REPO].git"
-        }
-    ],</code>
-    </li>
-        <li>Require [name] as defined in repositorie composer.json:<br>
-        <a href="https://github.com/t-franz/">https://github.com/t-franz/[REPO]/blob/master/composer.json</a><br>
-        <code>composer require t-franz/[name]:*</code>
+        <li>Add repository to composer.json:
+          <p><i>
+            "repositories": [<br>
+            {<br>
+            &nbsp;&nbsp;"type": "composer",<br>
+            &nbsp;&nbsp;"url": "https://packages.drupal.org/8"<br>
+            },<br>
+            {<br>
+                <b>
+            &nbsp;&nbsp;"type": "git",<br>
+            &nbsp;&nbsp;"url": "https://github.com/t-franz/[REPO].git"
+                </b><br>
+            }<br>
+              ],
+          </i></p>
+          <p>For example:<br><br>
+          <i>
+            ,<br>
+                {<br>
+                &nbsp;&nbsp;"type": "git",<br>
+                &nbsp;&nbsp;"url": "https://github.com/t-franz/drupal_helppage.git"<br>
+                }
+          </i></p>
         </li>
-        <li><a href="https://cambio.name/article/how-add-git-repository-composerjson-file-drupal-9">https://cambio.name/article/how-add-git-repository-composerjson-file-drupal-9</a></li>
+        <li>Require <b>[name]</b> as defined in repositories composer.json:<br>
+          <a href="https://github.com/t-franz?tab=repositories/">https://github.com/t-franz/</a>[REPO]/blob/master/composer.json<br><br>
+          <code>composer require t-franz/[name]:*</code><br><br>
+        Example: <code>composer require t-franz/custom_helppage:*</code>
+        </li>
+        <li>
+          <a href="https://cambio.name/article/how-add-git-repository-composerjson-file-drupal-9">https://cambio.name/article/how-add-git-repository-composerjson-file-drupal-9</a><br>
+          <a href="https://stackoverflow.com/questions/19916183/how-do-i-get-composer-to-download-the-latest-commit-in-the-master-branch-from-gi">https://stackoverflow.com/questions/19916183/how-do-i-get-composer-to-download-the-latest-commit-in-the-master-branch-from-gi</a>
+        </li>
       </ul>
     </div>
   </details>
