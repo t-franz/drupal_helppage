@@ -13,7 +13,7 @@
  */
 #}
 <div class="wrapper-class helppage-admin">
-<p>This file: <code>open /Users/tobbi/Sites/docker/dev/web/modules/custom/custom_helppage/templates/custom-helppage-admin.html.twig</code></p>
+<p>This file: <code>open /Users/tobbi/Sites/docker/_modules/custom_helppage/templates/custom-helppage-admin.html.twig</code></p>
 
 
   <details class="js-form-wrapper form-wrapper claro-details" id="enable-description" data-once="details">
@@ -86,6 +86,33 @@
         <code>vendor/bin/rector process web/modules/contrib/[YOUR_MODULE] --dry-run</code><br>
         <code>vendor/bin/rector process web/themes/custom/fus --dry-run</code><br></li>
         <li><a href="https://www.palantir.net/rector" target="_blank">Palantir Drupal rector</a></li>
+      </ul>
+    </div>
+  </details>
+
+    <details class="js-form-wrapper form-wrapper claro-details" id="enable-description00" data-once="details">
+    <summary aria-controls="enable-description00" role="button" aria-expanded="true" class="claro-details__summary" aria-pressed="true">
+      <h3>Add custom module from Github</h3>
+    </summary>
+    <div class="claro-details__wrapper">
+      <ul>
+        <li>Add repository to composer.json<br>
+        <code>"repositories": [
+        {
+            "type": "composer",
+            "url": "https://packages.drupal.org/8"
+        },
+        {
+            "type": "git",
+            "url": "https://github.com/t-franz/[REPO].git"
+        }
+    ],</code>
+    </li>
+        <li>Require [name] as defined in repositorie composer.json:<br>
+        <a href="https://github.com/t-franz/">https://github.com/t-franz/[REPO]/blob/master/composer.json</a><br>
+        <code>composer require t-franz/[name]:*</code>
+        </li>
+        <li><a href="https://cambio.name/article/how-add-git-repository-composerjson-file-drupal-9">https://cambio.name/article/how-add-git-repository-composerjson-file-drupal-9</a></li>
       </ul>
     </div>
   </details>
