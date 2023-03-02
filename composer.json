@@ -1,0 +1,10 @@
+{
+  "name": "t-franz/custom_helppage",
+  "type": "drupal-module",
+  "authors": [
+      {
+          "name": "Tobias Franz"
+      }
+  ],
+  "require": {}
+}
