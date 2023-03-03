@@ -1,7 +1,7 @@
 {
   "name": "t-franz/custom_helppage",
   "description": "This is a very simple module to add pages with additional help for users",
-  "type": "drupal-custom-module",
+  "type": "drupal-module",
   "license": "GPL-2.0+",
   "minimum-stability": "dev",
   "homepage": "https://github.com/t-franz/drupal_helppage.git",
@@ -11,8 +11,5 @@
           "homepage": "https://www.drupal.org/u/tfranz",
           "role": "Maintainer"
       }
-  ],
-  "require": {
-    "drupal/core": "^9.2"
-  }
+  ]
 }
