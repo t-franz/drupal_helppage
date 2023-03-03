@@ -30,7 +30,7 @@ function custom_helppage_theme() {
   $company_mail = \Drupal::config('custom_company_token.settings')->get('mail');
   $site_mail = \Drupal::config('system.site')->get('mail');
   $private = \Drupal::service('file_system')->realpath("private://");
-  $assets = $modulepath.'/assets';
+  $assets = '/'.$modulepath.'/assets';
   $publicfiles = '/sites/default/files/helppage';
 
   return [
@@ -59,4 +59,11 @@ function custom_helppage_preprocess_page(&$variables) {
   if ($current_path == '/admin/adminhelp' || $current_path == '/admin/userhelp'){
     $variables['#attached']['library'][] = 'custom_helppage/custom_helppage';
   }
+}
+
+/**
+ * Implements hook_toolbar_alter().
+ */
+function custom_helppage_toolbar_alter(&$items) {
+  $items['administration']['#attached']['library'][] = 'custom_helppage/custom_helppage.tree';
 }
