@@ -9,6 +9,8 @@
  * - email: get email
  * - sitemail: get sitemail
  * - privatepath: get url of private path
+ * - contactform: has contact form (Boolean)
+ * - contactformmail: mail-address in contact-form (String)
  * @ingroup themeable
  */
 #}
@@ -154,7 +156,7 @@
           <li><input type="checkbox" /><a href="/admin/config/search/custom-company-token" target="_blank">Check Custom Company Tokens</a></li>
           <li><input type="checkbox" /><a href="/admin/structure/block/manage/mobilecontact" target="_blank">Check Block „Mobile Contact“</a></li>
           <li><input type="checkbox" /><a href="/admin/config/system/site-information" target="_blank">Check System E-Mail</a>: {{sitemail}}</li>
-          <li><input type="checkbox" /><a href="/admin/structure/contact/manage/side_wide" target="_blank">Check Contactform Mail Settings</a></li>
+          <li><input type="checkbox" /><a href="/admin/structure/contact/manage/side_wide" target="_blank">Check Contactform Mail Settings</a>: {{contactformmail}}</li>
           <li><input type="checkbox" /><a href="/admin/config/development/mail_safety/settings" target="_blank">Check Mail Safety Settings</a></li>
           <li><input type="checkbox" /><a href="/node/4" target="_blank">Test Contact Form ... </a><br><a href="/admin/config/development/mail_safety/1/view" target="_blank">... in Mail Safety</a></li>
           <li><input type="checkbox" /><a href="/admin/config/development/mail_safety/clear" target="_blank">Clear Mail Safety</a></li>

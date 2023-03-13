@@ -10,6 +10,8 @@
  */
 function custom_helppage_theme() {
 
+  $moduleHandler = \Drupal::service('module_handler');
+
   // List Entity-Types
   // https://www.hashbangcode.com/article/drupal-9-get-list-content-types
   $entityTypeManager = \Drupal::service('entity_type.manager');
@@ -32,6 +34,8 @@ function custom_helppage_theme() {
   $private = \Drupal::service('file_system')->realpath("private://");
   $assets = '/'.$modulepath.'/assets';
   $publicfiles = '/sites/default/files/helppage';
+  $contactform = $moduleHandler->moduleExists('contact');
+  $contactformmail = $contactform ? \Drupal::config('contact.form.side_wide')->get('recipients')[0] : '';
 
   return [
     'custom-helppage-user' => [
@@ -49,15 +53,21 @@ function custom_helppage_theme() {
         'email' => $company_mail,
         'sitemail' => $site_mail,
         'privatepath' => $private,
+        'contactform' => $contactform,
+        'contactformmail' => $contactformmail,
         'domain' => str_replace('http://','',$GLOBALS['base_url']),
       ],],
   ];
 }
 
-function custom_helppage_preprocess_page(&$variables) {
-  $current_path = \Drupal::request()->getRequestUri();
-  if ($current_path == '/admin/adminhelp' || $current_path == '/admin/userhelp'){
-    $variables['#attached']['library'][] = 'custom_helppage/custom_helppage';
+/**
+ * Implements hook_page_attachments().
+ */
+function custom_helppage_page_attachments(array &$attachments) {
+  // Only attach CSS file to the "/admin/help" path.
+  $current_path = \Drupal::service('path.current')->getPath();
+  if ($current_path == '/admin/adminhelp' || $current_path == '/admin/userhelp') {
+    $attachments['#attached']['library'][] = 'custom_helppage/custom_helppage.pages';
   }
 }
 
