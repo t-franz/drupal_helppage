@@ -64,7 +64,7 @@
           <code>open web/themes/custom/fus/css/theme.css</code></li>
         <li><input type="checkbox" />Favicon anlegen: <a href="https://realfavicongenerator.net" target="_blank">https://realfavicongenerator.net</a></li>
         <li><input type="checkbox" />Favicon einbinden: <a href="/admin/config/user-interface/responsive_favicons" target="_blank">admin/config/user-interface/responsive_favicons</a></li>
-        <li><input type="checkbox" />Change .htaccess – Comment out line <code>#RewriteCond %{REQUEST_URI} !=/favicon.ico</code></li>
+        <li><input type="checkbox" />Change .htaccess – Comment out line <code>#RewriteCond %{REQUEST_URI} !=/favicon.ico</code></li>
 
         <li><input type="checkbox" /><a href="https://google-webfonts-helper.herokuapp.com/fonts" target="_blank">Webfont-Helper</a> | <a href="https://www.fontsquirrel.com/tools/webfont-generator" target="_blank">Font-Squirrel</a>
       </ul>
@@ -177,7 +177,8 @@
           <li><input type="checkbox" /><a href="/user/50/edit" target="_blank">Redaktion ändern</a> (Name, Passwort, {{email}})</li>
           <li><input type="checkbox" /><a href="/admin/modules/uninstall" target="_blank">Uninstall Modules</a><br>
               Audit Files, Mail Safety, Devel, Config Delete, Field UI, Views UI, Database Logging, Download Folder<br>
-              Configuration Manager
+              Configuration Manager<br>
+              <code>drush pmu auditfiles mail_safety devel config_delete</code>
           </li>
           <li><input type="checkbox" /><code>composer remove drupal/auditfiles drupal/mail_safety drupal/devel drupal/config_delete </code></li>
           <li><input type="checkbox" /><a href="/admin/modules/purge_configurations" target="_blank">Purge Configurations</a></li>
@@ -186,7 +187,7 @@
           <li><input type="checkbox" />Check for unused modules:
             <code>drush pml --no-core --status="disabled,not installed" --type=module</code>
             <a href="https://www.drupal.org/project/unused_modules">(Drupal Module: Unused Modules)</a></li>
-          <li><input type="checkbox" />Resolve outdated modules: <code>composer outdated --direct</code></li>
+          <li><input type="checkbox" />Resolve outdated modules: <code>composer outdated drupal/* --direct</code></li>
           <li><input type="checkbox" /><a target="_blank" href="https://www.drupal.org/project/fast_404">Migration? Install Fast404</a></li>
         </ul>
       </div>
@@ -258,10 +259,7 @@
           Preferences [cmd ,] -&gt; Profiles -&gt; Advanced -&gt; Triggers -&gt; Edit (nicht ans Ende!)<br />
           Password &amp; ggf. subdirectory</li>
 
-        <li><input type="checkbox" />Install Composer in ROOT: <a href="https://getcomposer.org/download/" target="_blank">https://getcomposer.org/download/</a></li>
-        <li><input type="checkbox" /><code>composer require cweagans/composer-patches szeidler/composer-patches-cli:^1.0</code></li>
-        <li><input type="checkbox" /><code>composer require --dev drush/drush</code><br>
-        (Bei WebGo muss dafür die PHP-Version des Servers beim Support umgestellt werden! Siehe E-Mails von support@webgo.de mit Betreff "webgoGmbH")<br>
+        <li><input type="checkbox" />Bei WebGo muss ggf die PHP-Version des Servers beim Support umgestellt werden! Siehe E-Mails von support@webgo.de mit Betreff "webgoGmbH"<br>
         Ggf. <a href="https://raw.githubusercontent.com/drush-ops/drush/8.x/examples/example.drush.ini">drush.ini</a> installieren <a href="https://github.com/drush-ops/drush/issues/3294#issuecomment-370201342">(PHP definieren)</a></li>
         <li><input type="checkbox" />Edit .bash_profile</br>
         <code>export LS_OPTIONS='--color=auto'<br>
@@ -281,44 +279,46 @@
       </ul>
       <h4>Remote Work</h4>
       <ul>
-        <li><input type="checkbox" />FTP: Upload assets.zip, composer.json, composer.lock, patches.json<br>
-        <code>scp composer.json composer.lock patches.json assets.zip [SSH-ALIAS]:www/[SUBDIRECTORY]</code>
+        <li><input type="checkbox" />FTP from local folder: Upload assets.zip, composer.json, patches.json<br>
+        <code>scp composer.json patches.json assets.zip [SSH-ALIAS]:www/[SUBDIRECTORY]</code>
         </li>
-        <li>TBD:Create patch-file to allow creation of htaccess-file: https://www.drupal.org/docs/develop/using-composer/using-drupals-composer-scaffold#toc_4 &amp; https://drupal.stackexchange.com/a/300874<br>
-        Alternative: Remove (and afterwards add) <code>"[web-root]/.htaccess": false</code>
-        <li><input type="checkbox" /><code>composer patch-enable --file='patches.json'</code></li>
-        <li><input type="checkbox" />
-          <code>composer install</code><br>
-          <code>composer update -w</code>
+        <li><input type="checkbox" /><code>composer update -w</code><br>
+          Missing files?<br>
+          open <i>composer.json</i> and (temporary) remove file-mapping for <i>.htaccess</i>:
+                      <code>"[web-root]/.htaccess": false</code><br>
+          Create files: <code>composer drupal:scaffold</code> and undo deletion of file-mapping.<br>
+          <small>TBD:Create patch-file to allow creation of htaccess-file: https://www.drupal.org/docs/develop/using-composer/using-drupals-composer-scaffold#toc_4 &amp; https://drupal.stackexchange.com/a/300874</small>
         </li>
-        <li><input type="checkbox" /><code>unzip assets.zip</code> („Replace All“)</li>
-
+        <li><input type="checkbox" /><code>unzip -o assets.zip</code> („Replace All“)</li>
+        {# <li><input type="checkbox" /><code>composer patch-enable --file='patches.json'</code></li> #}
+        <li><input type="checkbox" /><code>composer require --dev drush/drush</code><li>
         <li><input type="checkbox" />Check Drush: <code>php ./vendor/bin/drush --version</code></li>
-        <li><input type="checkbox" />Change .htaccess -&gt; <code>RewriteBase /</code></li>
+        <li><input type="checkbox" />Change .htaccess -&gt; <code>RewriteBase /</code><br>
+          Rewrite to https:<code>
+            RewriteCond %{HTTPS} !=on
+              RewriteRule ^ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
+          </code></li>
         <li><input type="checkbox" />Ordner anlegen<br />
           <code>mkdir private config config/sync</code></li>
-        <li><code>rm web/index.html</code></li>
+        <li>Remove <i>index.html</i> if <i>index.php</i> exists: <code>rm web/index.html</code></li>
         <li><input type="checkbox" />Webseite aufrufen, Datenbank eintragen (bis "Drupal ist bereits installiert")</li>
-        <li><input type="checkbox" />Datenbank auswählen -&gt; Importieren<br>
-        Oder via Drush:<br>
-        <code>drush sql-drop -y && drush sqlc < ../db-file.sql</code><br>
-        oder: </li>
+        <li><input type="checkbox" />Datenbank auswählen -&gt; Importieren</li>
+        <li><input type="checkbox" />Import Database via phpMyAdmin or via Drush:<br>
+        <code>php ./vendor/bin/drush sql-drop -y && php ./vendor/bin/drush sqlc < ./db-file.sql</code> (non-zipped file)<br>
+        Fehler "<i>ERROR>  1273 (HY000)>  at line 25: Unknown collation: 'utf8mb4_0900_ai_ci</i>'"? Replace collation:<br>
+        <code>sed -i '' 's/utf8mb4_0900_ai_ci/utf8_general_ci/g' ./db-file.sql</code><br>
+        <code>sed -i '' 's/CHARSET=utf8mb4/CHARSET=utf8/g' ./db-file.sql</code><br>
+        <i>https://tecadmin.net/resolved-unknown-collation-utf8mb4_0900_ai_ci/</i>
+        </li>
         <li><input type="checkbox" />Settings anpassen: web/sites/default/settings.php<br />
+        <code>chmod 777 web/sites/default/settings.php</code><br>
           506 $settings['<code>file_private_path</code>'] = <code>$app_root . '/../private'</code>;<br />
           $settings['<code>config_sync_directory</code>'] = <code>$app_root . '/../config/sync'</code>;<br>
-          700 <code>$settings['trusted_host_patterns'] = [
-          '^domain\.de$',
-          '^.+\.domain\.de$',
-          ];</code></li>
+          700 <code>$settings['trusted_host_patterns']</code><br>
+          <code>chmod 440 web/sites/default/settings.php</code></li>
         <li><input type="checkbox" />Updates-Skript aufrufen<br>
-        <code>drush updb</code></li>
-        <li>Local &amp; Remote: <code>rm db-file.sql.gz assets.zip</code></li>
-        {# <li><input type="checkbox" />Settings anpassen: web/sites/default/settings.php<br />
-        $settings['<code>update_free_access</code>'] = <code>FALSE</code>;<br>
-        <code>chmod 777 web/sites/default && nano web/sites/default/settings.php</code><br>
-        [Ctrl][W]<code> update_free_access</code><br>
-        [Ctrl][X]<br>
-        <code>chmod 444 web/sites/default</code></li> #}
+        <code>php ./vendor/bin/drush updb</code></li>
+        <li>Local &amp; Remote: <code>rm db-file.sql assets.zip</code></li>
       </ul>
     </div>
   </details>
@@ -333,7 +333,16 @@
         <code>/usr/bin/</code><br>
         <code>/opt/RZmagick/bin/</code> (Strato)</li>
         <li>Run Cron: <code>drush cron</code></li>
-        <li><input type="checkbox" /><a href="/admin/reports/status" target="_blank">Check Status</a></li>
+        <li><input type="checkbox" /><a href="/admin/reports/status" target="_blank">Check Status</a><br>
+        <i>Error: Database Isolation Level</i>?<br>
+        Add to settings.php:<br>
+        <code>
+          'init_commands' => [
+              'isolation_level' => 'SET SESSION TRANSACTION ISOLATION LEVEL READ COMMITTED',
+            ],
+        </code>
+        </li>
+
         <li><input type="checkbox" /><a href="/admin/reports/updates" target="_blank">Auf Aktualisierungen prüfen</a></li>
         <li><input type="checkbox" /><a href="/admin/reports/updates/settings" target="_blank">Einstellungen für Aktualisierungen prüfen</a></li>
         <li><input type="checkbox" /><a href="/admin/config/development/performance" target="_blank">Leistung</a></li>
