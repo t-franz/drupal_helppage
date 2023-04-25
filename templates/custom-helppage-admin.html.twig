@@ -147,9 +147,6 @@
         <ul><li><input type="checkbox" />Favicon checken: <img src="/sites/default/files/favicons/favicon-32x32.png?={{ random() }}" alt="" width="32" height="32"></li>
           <li><input type="checkbox" />fus.library.yml: remove scss/_development.scss &amp; ggf. blog.css<br>
           <code>gsed -i '/\@import \"development\"\;/d' web/themes/custom/fus/scss/styles.scss && open web/themes/custom/fus/scss/styles.scss</code></li>
-          <li><input type="checkbox" />font-display: swap; || optional<br>
-          <code>open web/themes/custom/fus/css/fonts.css</code></li>
-          <li><input type="checkbox" />AutoPrefix CSS</li>
           <li><input type="checkbox" />Revisionen löschen: <code>drush err:purge</code></li>
         </ul>
 
@@ -159,9 +156,7 @@
           <li><input type="checkbox" /><a href="/admin/structure/block/manage/mobilecontact" target="_blank">Check Block „Mobile Contact“</a></li>
           <li><input type="checkbox" /><a href="/admin/config/system/site-information" target="_blank">Check System E-Mail</a>: {{sitemail}}</li>
           <li><input type="checkbox" /><a href="/admin/structure/contact/manage/side_wide" target="_blank">Check Contactform Mail Settings</a>: {{contactformmail}}</li>
-          <li><input type="checkbox" /><a href="/admin/config/development/mail_safety/settings" target="_blank">Check Mail Safety Settings</a></li>
-          <li><input type="checkbox" /><a href="/node/4" target="_blank">Test Contact Form ... </a><br><a href="/admin/config/development/mail_safety/1/view" target="_blank">... in Mail Safety</a></li>
-          <li><input type="checkbox" /><a href="/admin/config/development/mail_safety/clear" target="_blank">Clear Mail Safety</a></li>
+          <li><input type="checkbox" /><a href="/node/4" target="_blank">Test Contact Form in Mailhog: </a><br><code>ddev launch -m</code></li>
           <li><input type="checkbox" /><a href="/node/4/edit" target="_blank">Check Schema Location</a> (Metatag > Open Graph)</li>
           <li><input type="checkbox" /><a href="/node/1/edit" target="_blank">Check front og:image</a> (Metatag > Open Graph)</li>
           <li><input type="checkbox" /><a href="/admin/config/search/metatag/settings" target="_blank">Disable unused metatags</a></li>
@@ -178,11 +173,11 @@
           <li><input type="checkbox" /><a href="/user/1/edit" target="_blank"><b>Admin-Zugang ändern!</b></a></li>
           <li><input type="checkbox" /><a href="/user/50/edit" target="_blank">Redaktion ändern</a> (Name, Passwort, {{email}})</li>
           <li><input type="checkbox" /><a href="/admin/modules/uninstall" target="_blank">Uninstall Modules</a><br>
-              Audit Files, Mail Safety, Devel, Config Delete, Field UI, Views UI, Database Logging, Download Folder<br>
+              Audit Files, Devel, Config Delete, Field UI, Views UI, Database Logging, Download Folder<br>
               Configuration Manager<br>
-              <code>drush pmu auditfiles mail_safety devel config_delete</code>
+              <code>drush pmu auditfiles devel config_delete</code>
           </li>
-          <li><input type="checkbox" /><code>composer remove drupal/auditfiles drupal/mail_safety drupal/devel drupal/config_delete </code></li>
+          <li><input type="checkbox" /><code>composer remove drupal/auditfiles drupal/devel drupal/config_delete </code></li>
           <li><input type="checkbox" /><a href="/admin/modules/purge_configurations" target="_blank">Purge Configurations</a></li>
           <li><input type="checkbox" /><a href="/admin/reports/dblog/confirm" target="_blank" >Clear Database Log</a></li>
           <li><input type="checkbox" /><a href="/admin/config/development/backup_migrate" target="_blank">Backup</a></li>
