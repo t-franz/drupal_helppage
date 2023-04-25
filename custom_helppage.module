@@ -35,7 +35,10 @@ function custom_helppage_theme() {
   $assets = '/'.$modulepath.'/assets';
   $publicfiles = '/sites/default/files/helppage';
   $contactform = $moduleHandler->moduleExists('contact');
-  $contactformmail = $contactform ? \Drupal::config('contact.form.side_wide')->get('recipients')[0] : '';
+  $contactformmail = '';
+  if ($contactform && \Drupal::config('contact.form.side_wide')->get('recipients')) {
+    $contactformmail = \Drupal::config('contact.form.side_wide')->get('recipients')[0];
+  }
 
   return [
     'custom-helppage-user' => [

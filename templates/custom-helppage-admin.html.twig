@@ -23,9 +23,12 @@
     <h3>First Steps</h3>
   </summary>
     <div class="claro-details__wrapper">
+
+      <ol>
+      <li><input type="checkbox" /><a href="/admin/structure/block/manage/kontakt/delete" target="_blank">Kontakt-Block aus der Sidebar entfernen</a></li>
+      </ol>
       <h4>Blog entfernen:</h4>
       <ol>
-        <li><input type="checkbox" /><a href="/admin/structure/block/manage/kontakt/delete" target="_blank">Kontakt-Block aus der Sidebar entfernen</a></li>
         <li><input type="checkbox" /><a href="/admin/content?type=article" target="_blank">Artikel Inhalte löschen</a></li>
         <li><input type="checkbox" /><a href="/admin/structure/views/view/blog/delete" target="_blank">Views löschen</a></li>
         <li><input type="checkbox" /><a href="/admin/structure/views/view/content" target="_blank">Views Spalte "Inhaltstyp" entfernen</a><br>
@@ -47,7 +50,6 @@
         <li><input type="checkbox" /><a href="/admin/modules/uninstall" target="_blank">Module "Contact Block" "Contact Form Alter", "Contact", "Contact Formatter" und "Antibot" entfernen</a><br />
         <code>drush pm-uninstall contact contact_block custom_contactformalter contact_formatter antibot && composer remove drupal/contact_block drupal/contact_formatter drupal/antibot</code></li>
         <li><input type="checkbox" /><a href="/node/3/edit" target="_blank">Datenschutzangaben zum Kontaktformular entfernen</a></li>
-        http://motive.local
       </ol>
 
       <h4>Settings:</h4>
@@ -143,8 +145,8 @@
     <summary aria-controls="enable-description1" role="button" aria-expanded="true" class="claro-details__summary" aria-pressed="true"><h3>Before</h3></summary>
     <div class="claro-details__wrapper">
         <ul><li><input type="checkbox" />Favicon checken: <img src="/sites/default/files/favicons/favicon-32x32.png?={{ random() }}" alt="" width="32" height="32"></li>
-          <li><input type="checkbox" />fus.library.yml: remove css/development.css &amp; ggf. blog.css<br>
-          <code>gsed -i '/development.css/d' web/themes/custom/fus/fus.libraries.yml && open web/themes/custom/fus/fus.libraries.yml</code></li>
+          <li><input type="checkbox" />fus.library.yml: remove scss/_development.scss &amp; ggf. blog.css<br>
+          <code>gsed -i '/\@import \"development\"\;/d' web/themes/custom/fus/scss/styles.scss && open web/themes/custom/fus/scss/styles.scss</code></li>
           <li><input type="checkbox" />font-display: swap; || optional<br>
           <code>open web/themes/custom/fus/css/fonts.css</code></li>
           <li><input type="checkbox" />AutoPrefix CSS</li>
@@ -342,7 +344,7 @@
             ],
         </code>
         </li>
-
+        <li><input type="checkbox" /><a href="/admin/config/services/index_now" target="_blank">SEO: Generate index_now API-Key</a></li>
         <li><input type="checkbox" /><a href="/admin/reports/updates" target="_blank">Auf Aktualisierungen prüfen</a></li>
         <li><input type="checkbox" /><a href="/admin/reports/updates/settings" target="_blank">Einstellungen für Aktualisierungen prüfen</a></li>
         <li><input type="checkbox" /><a href="/admin/config/development/performance" target="_blank">Leistung</a></li>
