@@ -85,11 +85,13 @@
       add missing templates<br>
       add css/classy/*.css
       </li>
-        <li><input type="checkbox" /><a href="/admin/reports/upgrade-status" target="_blank">Check Update Status</a></li>
-        <li><input type="checkbox" /><a href="/admin/reports/upgrade-rector" target="_blank">Upgrade with rector</a> oder:<br>
+        <li><input type="checkbox" />Install <a href="https://www.drupal.org/project/update_status">Update Status</a> and <a href="/admin/reports/upgrade-status" target="_blank">Check Update Status</a></li>
+        <li><input type="checkbox" />Install <a href="https://www.drupal.org/project/upgrade_rector">Upgrade Rector</a> <a href="https://www.drupal.org/project/upgrade_rector/issues/3322943">(Patch for alpha8)</a> and <a href="/admin/reports/upgrade-rector" target="_blank">Upgrade with rector</a> oder (auch ohne Patch):<br>
         <code>vendor/bin/rector process web/modules/contrib/[YOUR_MODULE] --dry-run</code><br>
         <code>vendor/bin/rector process web/themes/custom/fus --dry-run</code><br></li>
         <li><a href="https://www.palantir.net/rector" target="_blank">Palantir Drupal rector</a></li>
+        <li>Ältere Webseiten vor wsk:<br>remove custom_hooks.libraries.yml and JS-folder.<br>
+Change 'for-loop' in twig-templates (paragraph.html.twig &amp; layout--two/threecol...html.twig)</li>
       </ul>
     </div>
   </details>
