@@ -66,8 +66,6 @@
           <code>open web/themes/custom/fus/css/theme.css</code></li>
         <li><input type="checkbox" />Favicon anlegen: <a href="https://realfavicongenerator.net" target="_blank">https://realfavicongenerator.net</a></li>
         <li><input type="checkbox" />Favicon einbinden: <a href="/admin/config/user-interface/responsive_favicons" target="_blank">admin/config/user-interface/responsive_favicons</a></li>
-        <li><input type="checkbox" />Change .htaccess – Comment out line <code>#RewriteCond %{REQUEST_URI} !=/favicon.ico</code></li>
-
         <li><input type="checkbox" /><a href="https://google-webfonts-helper.herokuapp.com/fonts" target="_blank">Webfont-Helper</a> | <a href="https://www.fontsquirrel.com/tools/webfont-generator" target="_blank">Font-Squirrel</a>
       </ul>
     </div>
@@ -79,19 +77,19 @@
     </summary>
     <div class="claro-details__wrapper">
       <ul>
-      <li><input type="checkbox" /><strong>Change Template:</strong><br>
-      replace fus.libraries.yaml<br>
-      replace fus.info.yaml<br>
-      add missing templates<br>
-      add css/classy/*.css
-      </li>
+        <li><input type="checkbox" /><strong>Change Template:</strong><br>
+        replace fus.libraries.yaml<br>
+        replace fus.info.yaml<br>
+        add missing templates<br>
+        add css/classy/*.css
+        </li>
         <li><input type="checkbox" />Install <a href="https://www.drupal.org/project/update_status">Update Status</a> and <a href="/admin/reports/upgrade-status" target="_blank">Check Update Status</a></li>
         <li><input type="checkbox" />Install <a href="https://www.drupal.org/project/upgrade_rector">Upgrade Rector</a> <a href="https://www.drupal.org/project/upgrade_rector/issues/3322943">(Patch for alpha8)</a> and <a href="/admin/reports/upgrade-rector" target="_blank">Upgrade with rector</a> oder (auch ohne Patch):<br>
         <code>vendor/bin/rector process web/modules/contrib/[YOUR_MODULE] --dry-run</code><br>
         <code>vendor/bin/rector process web/themes/custom/fus --dry-run</code><br></li>
         <li><a href="https://www.palantir.net/rector" target="_blank">Palantir Drupal rector</a></li>
         <li>Ältere Webseiten vor wsk:<br>remove custom_hooks.libraries.yml and JS-folder.<br>
-Change 'for-loop' in twig-templates (paragraph.html.twig &amp; layout--two/threecol...html.twig)</li>
+          Change 'for-loop' in twig-templates (paragraph.html.twig &amp; layout--two/threecol...html.twig)</li>
       </ul>
     </div>
   </details>
@@ -144,15 +142,15 @@ Change 'for-loop' in twig-templates (paragraph.html.twig &amp; layout--two/three
   <h2>Deployment</h2>
 
   <details class="js-form-wrapper form-wrapper claro-details" id="enable-description1" data-once="details">
-    <summary aria-controls="enable-description1" role="button" aria-expanded="true" class="claro-details__summary" aria-pressed="true"><h3>Before</h3></summary>
+    <summary aria-controls="enable-description1" role="button" aria-expanded="true" class="claro-details__summary" aria-pressed="true">
+      <h3>Before</h3>
+    </summary>
     <div class="claro-details__wrapper">
-        <ul><li><input type="checkbox" />Favicon checken: <img src="/sites/default/files/favicons/favicon-32x32.png?={{ random() }}" alt="" width="32" height="32"></li>
+        <ul>
+          <li><input type="checkbox" />Favicon checken: <img src="/sites/default/files/favicons/favicon-32x32.png?={{ random() }}" alt="" width="32" height="32"></li>
           <li><input type="checkbox" />fus.library.yml: remove scss/_development.scss &amp; ggf. blog.css<br>
           <code>gsed -i '/\@import \"development\"\;/d' web/themes/custom/fus/scss/styles.scss && open web/themes/custom/fus/scss/styles.scss</code></li>
-          <li><input type="checkbox" />Revisionen löschen: <code>drush err:purge</code></li>
-        </ul>
-
-        <ul>
+          <li><input type="checkbox" /><a href="/admin/config/media/responsive-image-style" target="_blank">Check Responsive Image Styles</a></li>
           <li><input type="checkbox" /><a href="/admin/structure/block/block-content" target="_blank">Check genutzte Blöcke</a></li>
           <li><input type="checkbox" /><a href="/admin/config/search/custom-company-token" target="_blank">Check Custom Company Tokens</a></li>
           <li><input type="checkbox" /><a href="/admin/structure/block/manage/mobilecontact" target="_blank">Check Block „Mobile Contact“</a></li>
@@ -170,17 +168,16 @@ Change 'for-loop' in twig-templates (paragraph.html.twig &amp; layout--two/three
           <li><input type="checkbox" /><a href="/admin/content/media" target="_blank">Remove unused Media</a></li>
           <li><input type="checkbox" /><a href="/admin/reports/auditfiles/managednotused" target="_blank">Audit Files</a></li>
           <li><input type="checkbox" /><a href="/admin/reports/auditfiles/managednotused" target="_blank">Remove unused files from server</a><br>
-          <code>open web/sites/default/files</code></li>
+            <code>open web/sites/default/files</code></li>
           <li><input type="checkbox" /><a href="/admin/content/files" target="_blank">Check files (clear cache)</a></li>
           <li><input type="checkbox" /><a href="/user/1/edit" target="_blank"><b>Admin-Zugang ändern!</b></a></li>
           <li><input type="checkbox" /><a href="/user/50/edit" target="_blank">Redaktion ändern</a> (Name, Passwort, {{email}})</li>
+          <li><input type="checkbox" />Revisionen löschen: <code>drush err:purge</code></li>
           <li><input type="checkbox" /><a href="/admin/modules/uninstall" target="_blank">Uninstall Modules</a><br>
-              Audit Files, Devel, Config Delete, Field UI, Views UI, Database Logging, Download Folder<br>
-              Configuration Manager<br>
-              <code>drush pmu auditfiles devel config_delete</code>
-          </li>
-          <li><input type="checkbox" /><code>composer remove drupal/auditfiles drupal/devel drupal/config_delete </code></li>
-          <li><input type="checkbox" /><a href="/admin/modules/purge_configurations" target="_blank">Purge Configurations</a></li>
+            Audit Files, Devel, Config Delete, Field UI, Views UI, Database Logging, Download Folder<br>
+            Configuration Manager<br>
+            <code>drush pmu devel</code><br>
+            <code>composer remove drupal/devel drupal/devel_kint_extras </code></li>
           <li><input type="checkbox" /><a href="/admin/reports/dblog/confirm" target="_blank" >Clear Database Log</a></li>
           <li><input type="checkbox" /><a href="/admin/config/development/backup_migrate" target="_blank">Backup</a></li>
           <li><input type="checkbox" />Check for unused modules:
@@ -193,7 +190,9 @@ Change 'for-loop' in twig-templates (paragraph.html.twig &amp; layout--two/three
   </details>
 
   <details class="js-form-wrapper form-wrapper claro-details" id="enable-description2" data-once="details">
-    <summary aria-controls="enable-description2" role="button" aria-expanded="true" class="claro-details__summary" aria-pressed="true"><h3>Optimierungen</h3></summary>
+    <summary aria-controls="enable-description2" role="button" aria-expanded="true" class="claro-details__summary" aria-pressed="true">
+      <h3>Optimierungen</h3>
+    </summary>
     <div class="claro-details__wrapper">
         <ul>
           <li><input type="checkbox" />Regex: Find multiline CSS-Comments: \/\*[\s\S]+?\*\/</li>
@@ -229,13 +228,15 @@ Change 'for-loop' in twig-templates (paragraph.html.twig &amp; layout--two/three
 
   <h2>SSH Install</h2>
     <details class="js-form-wrapper form-wrapper claro-details" id="enable-description3" data-once="details">
-    <summary aria-controls="enable-description3" role="button" aria-expanded="true" class="claro-details__summary" aria-pressed="true"><h3>Local</h3></summary>
+    <summary aria-controls="enable-description3" role="button" aria-expanded="true" class="claro-details__summary" aria-pressed="true">
+      <h3>Local</h3>
+    </summary>
     <div class="claro-details__wrapper">
       <ul>
         <li><input type="checkbox" /><code>drush image-flush --all</code></li>
         <li><input type="checkbox" />Zip folders:<br />
-          <code>find . -name '.DS_Store' -type f -delete && zip -r assets web/modules/custom web/themes patches web/libraries web/sites/default/files -x "**/.DS_Store" -x "**/__MACOSX" -x "**/.zip" -x "web/libraries/superfish" -x "web/sites/default/files/languages/*" -x "web/sites/default/files/php/*" -x "web/sites/default/files/styles/*" -x "**/.ddev"</code></li>
-        <li><input type="checkbox" />Export Database via Drush: <code>drush cr && drush sql-dump --structure-tables-list=cache,cache_* --gzip --result-file=../db-file.sql && open ./</code><br>
+          <code>find . -name '.DS_Store' -type f -delete && zip -r assets web/modules/custom web/themes patches web/libraries web/sites/default/files -x "**/.DS_Store" -x "**/__MACOSX" -x "**/.zip" -x "web/libraries/superfish" -x "web/sites/default/files/languages/*" -x "web/sites/default/files/php/*" -x "web/sites/default/files/styles/*" -x "**/.ddev" -x "**/.code-workspace"</code></li>
+        <li><input type="checkbox" />Export Database mit (mySqlAdmin) und ohne (Drush import) Komprimierung via Drush: <code>drush cr && drush sql-dump --structure-tables-list=cache,cache_* --gzip --result-file=../db-file.sql && drush sql-dump --structure-tables-list=cache,cache_* --result-file=../db-file.sql && open ./</code><br>
         <a href="http://localhost/phpMyAdmin5/index.php?route=/server/databases">Export Database manually:</a><br />
           Clear Cache<br />
           Datenbank auswählen (oben in Reiter!) -&gt;<br />
@@ -247,39 +248,38 @@ Change 'for-loop' in twig-templates (paragraph.html.twig &amp; layout--two/three
   </details>
 
   <details class="js-form-wrapper form-wrapper claro-details" id="enable-description4" data-once="details">
-    <summary aria-controls="enable-description4" role="button" aria-expanded="true" class="claro-details__summary" aria-pressed="true">  <h3>Remote</h3></summary>
+    <summary aria-controls="enable-description4" role="button" aria-expanded="true" class="claro-details__summary" aria-pressed="true">
+      <h3>Remote</h3>
+    </summary>
     <div class="claro-details__wrapper">
-    <h4>Remote Setup</h4>
+      <h4>Remote Setup</h4>
       <ul>
         <li><input type="checkbox" />Setup SSH shortcut:<br>
           <code>open ~/.ssh/config</code></li>
-        <li><input type="checkbox" />iTerm2:<br />
-          Window -&gt; Password-Manager [alt][cmd][F]<br />
-          Preferences [cmd ,] -&gt; Profiles -&gt; Advanced -&gt; Triggers -&gt; Edit (nicht ans Ende!)<br />
+        <li><input type="checkbox" />Login Remote: <code>ssh XYZ</code></li>
+        <li><input type="checkbox" />iTerm2: Passwort eintragen<br />
+          Trigger anlegen: Preferences [cmd ,] -&gt; Profiles -&gt; Advanced -&gt; Triggers -&gt; Edit (nicht ans Ende!)<br />
           Password &amp; ggf. subdirectory</li>
+        <li><input type="checkbox" />Installations-script 'ionos-install.sh' in root hochladen und ausführen: <code>sh ionos-install.sh</code></li>
 
         <li><input type="checkbox" />Bei WebGo muss ggf die PHP-Version des Servers beim Support umgestellt werden! Siehe E-Mails von support@webgo.de mit Betreff "webgoGmbH"<br>
         Ggf. <a href="https://raw.githubusercontent.com/drush-ops/drush/8.x/examples/example.drush.ini">drush.ini</a> installieren <a href="https://github.com/drush-ops/drush/issues/3294#issuecomment-370201342">(PHP definieren)</a></li>
         <li><input type="checkbox" />Edit .bash_profile</br>
         <code>export LS_OPTIONS='--color=auto'<br>
           eval "`dircolors`"<br>
-          # Source global definitions<br>
-          if [ -f /home/bashrc ]; then<br>
-                  . /home/bashrc<br>
-          fi<br>
           # User specific aliases and functions<br>
           alias php='/usr/bin/php8.1'<br>
-          alias drush='php ./vendor/bin/drush'<br>
           alias composer='php ~/composer.phar'<br>
+          alias drush='php ./vendor/bin/drush'<br>
           alias ls='ls -Agoh'<br>
-          # cd www/[Change to SUBDIRECTORY]<br>
+          echo "cd www/[Change to SUBDIRECTORY]"<br>
           ls</code></li>
 
       </ul>
       <h4>Remote Work</h4>
       <ul>
-        <li><input type="checkbox" />FTP from local folder: Upload assets.zip, composer.json, patches.json<br>
-        <code>scp composer.json patches.json assets.zip [SSH-ALIAS]:www/[SUBDIRECTORY]</code>
+        <li><input type="checkbox" />FTP from local folder: Upload assets.zip, composer.json, patches.json, db-file.sql (ohne Komprimierung)<br>
+        <code>scp composer.json patches.json assets.zip db-file.sql [SSH-ALIAS]:www/[SUBDIRECTORY]</code>
         </li>
         <li><input type="checkbox" /><code>composer update -w</code><br>
           Missing files?<br>
@@ -288,23 +288,20 @@ Change 'for-loop' in twig-templates (paragraph.html.twig &amp; layout--two/three
           Create files: <code>composer drupal:scaffold</code> and undo deletion of file-mapping.<br>
           <small>TBD:Create patch-file to allow creation of htaccess-file: https://www.drupal.org/docs/develop/using-composer/using-drupals-composer-scaffold#toc_4 &amp; https://drupal.stackexchange.com/a/300874</small>
         </li>
-        <li><input type="checkbox" /><code>unzip -o assets.zip</code> („Replace All“)</li>
         {# <li><input type="checkbox" /><code>composer patch-enable --file='patches.json'</code></li> #}
-        <li><input type="checkbox" /><code>composer require --dev drush/drush</code><li>
+        <li><input type="checkbox" /><code>composer require drush/drush</code><li>
         <li><input type="checkbox" />Check Drush: <code>php ./vendor/bin/drush --version</code></li>
-        <li><input type="checkbox" />Change .htaccess -&gt; <code>RewriteBase /</code><br>
-          Rewrite to https:<code>
-            RewriteCond %{HTTPS} !=on
-              RewriteRule ^ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
-          </code></li>
+        <li><input type="checkbox" />Change .htaccess -&gt; <code>sed -i "s/  # RewriteBase \//  RewriteBase \//" ./web/.htaccess</code>
+        <li><input type="checkbox" />Change .htaccess – Comment out line <code># RewriteCond %{REQUEST_URI} !=/favicon.ico</code></li>
         <li><input type="checkbox" />Ordner anlegen<br />
           <code>mkdir private config config/sync</code></li>
+        <li><input type="checkbox" /><code>unzip -o assets.zip</code> („Replace All“)</li>
         <li>Remove <i>index.html</i> if <i>index.php</i> exists: <code>rm web/index.html</code></li>
-        <li><input type="checkbox" />Webseite aufrufen, Datenbank eintragen (bis "Drupal ist bereits installiert")</li>
-        <li><input type="checkbox" />Datenbank auswählen -&gt; Importieren</li>
+        <li><input type="checkbox" />Webseite aufrufen, Datenbank eintragen</li>
+        <li><input type="checkbox" />Webhosting: Datenbank auswählen -&gt; Importieren</li>
         <li><input type="checkbox" />Import Database via phpMyAdmin or via Drush:<br>
-        <code>php ./vendor/bin/drush sql-drop -y && php ./vendor/bin/drush sqlc < ./db-file.sql</code> (non-zipped file)<br>
-        Fehler "<i>ERROR>  1273 (HY000)>  at line 25: Unknown collation: 'utf8mb4_0900_ai_ci</i>'"? Replace collation:<br>
+        <code>php ./vendor/bin/drush sql-drop -y && php ./vendor/bin/drush sqlc < ./db-file.sql</code> (non-zipped file)</li>
+        <li>Fehler "<i>ERROR>  1273 (HY000)>  at line 25: Unknown collation: 'utf8mb4_0900_ai_ci</i>'"? Replace collation:<br>
         <code>sed -i '' 's/utf8mb4_0900_ai_ci/utf8_general_ci/g' ./db-file.sql</code><br>
         <code>sed -i '' 's/CHARSET=utf8mb4/CHARSET=utf8/g' ./db-file.sql</code><br>
         <i>https://tecadmin.net/resolved-unknown-collation-utf8mb4_0900_ai_ci/</i>
@@ -314,17 +311,21 @@ Change 'for-loop' in twig-templates (paragraph.html.twig &amp; layout--two/three
           506 $settings['<code>file_private_path</code>'] = <code>$app_root . '/../private'</code>;<br />
           $settings['<code>config_sync_directory</code>'] = <code>$app_root . '/../config/sync'</code>;<br>
           700 <code>$settings['trusted_host_patterns']</code><br>
-          <code>chmod 440 web/sites/default/settings.php</code></li>
-        <li><input type="checkbox" />Updates-Skript aufrufen<br>
-        <code>php ./vendor/bin/drush updb</code></li>
-        <li>Local &amp; Remote: <code>rm db-file.sql assets.zip</code></li>
+          End of Database <code>'init_commands' => [
+              'isolation_level' => 'SET SESSION TRANSACTION ISOLATION LEVEL READ COMMITTED',
+            ],</code></li>
+        <li><code>chmod 440 web/sites/default/settings.php</code></li>
+        <li><input type="checkbox" />In der Webseite Updates-Skript aufrufen oder <code>php ./vendor/bin/drush updb</code></li>
+        <li>Local &amp; Remote: <code>rm db-file.sql db-file.sql.gz assets.zip</code></li>
       </ul>
     </div>
   </details>
 
 
   <details class="js-form-wrapper form-wrapper claro-details" id="enable-description5" data-once="details">
-    <summary aria-controls="enable-description5" role="button" aria-expanded="true" class="claro-details__summary" aria-pressed="true"><h3>After</h3></summary>
+    <summary aria-controls="enable-description5" role="button" aria-expanded="true" class="claro-details__summary" aria-pressed="true">
+      <h3>After</h3>
+    </summary>
     <div class="claro-details__wrapper">
       <ul>
         <li><input type="checkbox" /><a href="/admin/config/media/file-system" target="_blank">Check Private Filesystem</a>: <i>{{privatepath}}</i></li>
@@ -332,30 +333,22 @@ Change 'for-loop' in twig-templates (paragraph.html.twig &amp; layout--two/three
         <code>/usr/bin/</code><br>
         <code>/opt/RZmagick/bin/</code> (Strato)</li>
         <li>Run Cron: <code>drush cron</code></li>
-        <li><input type="checkbox" /><a href="/admin/reports/status" target="_blank">Check Status</a><br>
-        <i>Error: Database Isolation Level</i>?<br>
-        Add to settings.php:<br>
-        <code>
-          'init_commands' => [
-              'isolation_level' => 'SET SESSION TRANSACTION ISOLATION LEVEL READ COMMITTED',
-            ],
-        </code>
-        </li>
         <li><input type="checkbox" /><a href="/admin/config/services/index_now" target="_blank">SEO: Generate index_now API-Key</a></li>
         <li><input type="checkbox" /><a href="/admin/reports/updates" target="_blank">Auf Aktualisierungen prüfen</a></li>
         <li><input type="checkbox" /><a href="/admin/reports/updates/settings" target="_blank">Einstellungen für Aktualisierungen prüfen</a></li>
         <li><input type="checkbox" /><a href="/admin/config/development/performance" target="_blank">Leistung</a></li>
         <li><input type="checkbox" /><a href="/admin/config/development/logging" target="_blank">Fehlermeldungen</a></li>
         <li><a href="/admin/config/system/cron" target="_blank">Cronjob extern anlegen</a><br>
-        Webgo: Paketverwaltung -> CronJobs Light</li>
+        Webgo: Paketverwaltung -> CronJobs Light<br>
+        Ionos: <a href="https://mein.ionos.de/cronjob-add" target="_blank">Cronjob add</a></li>
       </ul>
 
       <ul>
           <li><input type="checkbox" />htaccess: Redirect &amp; GZip<br>
             <code>open web/core/assets/scaffold/files/htaccess</code></li>
           <li><input type="checkbox" />htaccess redirect to https:<br>
-            <code>RewriteCond %{HTTPS} !=on</code><br>
-            <code>RewriteRule ^ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]</code></li>
+            <code>RewriteCond %{HTTPS} !=on<br>
+            RewriteRule ^ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]</code></li>
       </ul>
 
 
@@ -378,19 +371,24 @@ Change 'for-loop' in twig-templates (paragraph.html.twig &amp; layout--two/three
     </div>
   </details>
 
-    <details class="js-form-wrapper form-wrapper claro-details" id="enable-description6" data-once="details">
-    <summary aria-controls="enable-description6" role="button" aria-expanded="true" class="claro-details__summary" aria-pressed="true"><h3>Module</h3></summary>
-    <div>
-    <ul>
-      <li><a href="https://www.drupal.org/project/lunr">Lunr Search</a></li>
-    </ul>
+  <details class="js-form-wrapper form-wrapper claro-details" id="enable-description6" data-once="details">
+    <summary aria-controls="enable-description6" role="button" aria-expanded="true" class="claro-details__summary" aria-pressed="true">
+      <h3>Module</h3>
+    </summary>
+    <div class="claro-details__wrapper">
+      <ul>
+        <li><a href="https://www.drupal.org/project/lunr">Lunr Search</a></li>
+        <li><a href="https://www.drupal.org/project/easy_install" target="_blank">Easy Install</a> to purge orphan configurations</a></li>
+      </ul>
     </div>
   </details>
 
 
 
   <details class="js-form-wrapper form-wrapper claro-details" id="enable-description7" data-once="details">
-    <summary aria-controls="enable-description7" role="button" aria-expanded="true" class="claro-details__summary" aria-pressed="true"><h3>E-Mail</h3></summary>
+    <summary aria-controls="enable-description7" role="button" aria-expanded="true" class="claro-details__summary" aria-pressed="true">
+      <h3>E-Mail</h3>
+    </summary>
     <div class="claro-details__wrapper">
         <code>
           <p>
@@ -431,7 +429,9 @@ Change 'for-loop' in twig-templates (paragraph.html.twig &amp; layout--two/three
 
 
   <details class="js-form-wrapper form-wrapper claro-details" id="enable-description8" data-once="details">
-    <summary aria-controls="enable-description8" role="button" aria-expanded="true" class="claro-details__summary" aria-pressed="true"><h3>Privacy</h3></summary>
+    <summary aria-controls="enable-description8" role="button" aria-expanded="true" class="claro-details__summary" aria-pressed="true">
+      <h3>Privacy</h3>
+    </summary>
     <div class="claro-details__wrapper">
         <ul>
           <li><a href="https://www.drupal.org/project/cookies/">COOKiES Consent Management</a></li>
