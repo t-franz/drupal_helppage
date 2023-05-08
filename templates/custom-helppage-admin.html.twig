@@ -344,6 +344,10 @@
           Trigger anlegen: Preferences [cmd ,] -&gt; Profiles -&gt; Advanced -&gt; Triggers -&gt; Edit (nicht ans Ende!)<br />
           Password &amp; ggf. subdirectory</li>
 
+        <li><input type="checkbox" />Public RSA-Key hochladen: <code>ssh-copy-id [SSH-Name]</code><br>
+        <small>Oder: Lokal <code>cat ~/.ssh/id_rsa.pub</code> und remote <code>echo "ssh-rsa ssh-rsa AAAAB3N...Wf4eRQ==" >> ~/.ssh/authorized_keys</code></small><br>
+        https://www.webgo.com.au/knowledgebase/68/The-Guide-to-Generating-and-Uploading-SSH-Keys.html</li>
+
         <li><input type="checkbox" />Install Shell-Script in root: <i>iTerm2>Install Shell Integration</i>
 
         <li><input type="checkbox" />Installations-script 'xxx-install.sh' in <i>root</i> hochladen und ausführen: <code>sh install.sh</code></li>
@@ -450,7 +454,7 @@
 
         <li>Run Cron: <code>drush cron</code></li>
 
-        <li><input type="checkbox" /><a href="/admin/config/services/index_now" target="_blank">SEO: Generate index_now API-Key</a></li>
+        <li><input type="checkbox" /><a href="/admin/config/search/simplesitemap/engines/settings#edit-index-now-key" target="_blank">SEO: Generate index_now API-Key</a></li>
 
         <li><input type="checkbox" /><a href="/admin/reports/updates" target="_blank">Auf Aktualisierungen prüfen</a></li>
 
