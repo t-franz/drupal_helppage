@@ -357,8 +357,7 @@
         Ggf. <a href="https://raw.githubusercontent.com/drush-ops/drush/8.x/examples/example.drush.ini">drush.ini</a> installieren <a href="https://github.com/drush-ops/drush/issues/3294#issuecomment-370201342">(PHP definieren)</a></li>
 
         <li><input type="checkbox" />Edit .bash_profile</br>
-        <code>export LS_OPTIONS='--color=auto'<br>
-          eval "`dircolors`"<br>
+        <code>PS1='\[\033[1;31m\]\u\[\033[1;33m\]@\[\033[1;36m\]\h \[\033[1;33m\]\w \[\033[1;32m\]# \[\033[0m\]'<br>
           # User specific aliases and functions<br>
           alias php='/usr/bin/php8.1'<br>
           alias composer='php ~/composer.phar'<br>
@@ -434,6 +433,16 @@
         <li><input type="checkbox" />In der Webseite Updates-Skript aufrufen oder <code>php ./vendor/bin/drush updb</code></li>
 
         <li>Local &amp; Remote: <code>rm db-file.sql assets.zip</code></li>
+
+         <li><input type="checkbox" /><a href="/admin/config/media/file-system" target="_blank">Check Private Filesystem</a>: <i>{{privatepath}}</i></li>
+
+        <li><input type="checkbox" /><a href="/admin/config/media/image-toolkit" target="_blank">Check Image Toolkit</a><br>
+        <code>/usr/bin/</code><br>
+        <code>/opt/RZmagick/bin/</code> (Strato)</li>
+
+        <li>Run Cron: <code>drush cron</code></li>
+
+
       </ul>
     </div>
   </details>
@@ -446,13 +455,16 @@
     <div class="claro-details__wrapper">
       <ul>
 
-        <li><input type="checkbox" /><a href="/admin/config/media/file-system" target="_blank">Check Private Filesystem</a>: <i>{{privatepath}}</i></li>
+        <li><input type="checkbox" />htaccess redirect to https:<br>
+          <code>RewriteCond %{HTTPS} !=on<br>
+          RewriteRule ^ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]</code></li>
 
-        <li><input type="checkbox" /><a href="/admin/config/media/image-toolkit" target="_blank">Check Image Toolkit</a><br>
-        <code>/usr/bin/</code><br>
-        <code>/opt/RZmagick/bin/</code> (Strato)</li>
+        <li><input type="checkbox" />htaccess: Redirect &amp; GZip<br>
+          <code>open web/core/assets/scaffold/files/htaccess</code></li>
 
-        <li>Run Cron: <code>drush cron</code></li>
+        <li><a href="/admin/config/system/cron" target="_blank">Cronjob extern anlegen</a><br>
+        Webgo: Paketverwaltung -> CronJobs Light<br>
+        Ionos: <a href="https://mein.ionos.de/cronjob-add" target="_blank">Cronjob add</a></li>
 
         <li><input type="checkbox" /><a href="/admin/config/search/simplesitemap/engines/settings#edit-index-now-key" target="_blank">SEO: Generate index_now API-Key</a></li>
 
@@ -464,19 +476,6 @@
 
         <li><input type="checkbox" /><a href="/admin/config/development/logging" target="_blank">Fehlermeldungen</a></li>
 
-        <li><a href="/admin/config/system/cron" target="_blank">Cronjob extern anlegen</a><br>
-        Webgo: Paketverwaltung -> CronJobs Light<br>
-        Ionos: <a href="https://mein.ionos.de/cronjob-add" target="_blank">Cronjob add</a></li>
-      </ul>
-
-      <ul>
-
-          <li><input type="checkbox" />htaccess: Redirect &amp; GZip<br>
-            <code>open web/core/assets/scaffold/files/htaccess</code></li>
-
-          <li><input type="checkbox" />htaccess redirect to https:<br>
-            <code>RewriteCond %{HTTPS} !=on<br>
-            RewriteRule ^ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]</code></li>
       </ul>
 
 
