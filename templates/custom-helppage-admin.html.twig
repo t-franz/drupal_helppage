@@ -114,6 +114,12 @@
 
         <li>Ältere Webseiten vor wsk:<br>remove custom_hooks.libraries.yml and JS-folder.<br>
           Change 'for-loop' in twig-templates (paragraph.html.twig &amp; layout--two/threecol...html.twig)</li>
+
+        <li>Superfish-Modul und -Library zippen, in die Custom-Module legen und danach OHNE DeInstallation: <code>composer remove drupal/superfish</code> und Modul wieder entpacken.</li>
+        {# <li><code>composer require drupal/core:"^10.0" --no-update</code></li> #}
+        <li><code>composer require drupal/core-recommended:"^10.0" --no-update</code></li>
+        <li><code>composer update</code></li>
+        <li>Wer stört das Update? <code>composer prohibits drupal/core 10.0</code></li>
       </ul>
     </div>
   </details>
