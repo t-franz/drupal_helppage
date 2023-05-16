@@ -46,10 +46,10 @@
       <ul>
 
         <li><input type="checkbox" />Branding-Block Twig – Add Width/ Height of 2xLogo &amp; 1x Mobile Logo:<br>
-          <code>open web/themes/custom/fus/templates/block--system-branding-block.html.twig</code></li>
+          <code>open ./web/themes/custom/fus/templates/block--system-branding-block.html.twig</code></li>
 
         <li><input type="checkbox" />Check CSS-Variables (Colors, --headeraspectratio) in theme.css<br>
-          <code>open web/themes/custom/fus/css/theme.css</code></li>
+          <code>open ./web/themes/custom/fus/scss/_variables.scss</code></li>
 
         <li><input type="checkbox" />Favicon anlegen: <a href="https://realfavicongenerator.net" target="_blank">https://realfavicongenerator.net</a></li>
 
@@ -77,8 +77,8 @@
         <li><input type="checkbox" />Install <a href="https://www.drupal.org/project/update_status">Update Status</a> and <a href="/admin/reports/upgrade-status" target="_blank">Check Update Status</a></li>
 
         <li><input type="checkbox" />Install <a href="https://www.drupal.org/project/upgrade_rector">Upgrade Rector</a> <a href="https://www.drupal.org/project/upgrade_rector/issues/3322943">(Patch for alpha8)</a> and <a href="/admin/reports/upgrade-rector" target="_blank">Upgrade with rector</a> oder (auch ohne Patch):<br>
-        <code>vendor/bin/rector process web/modules/contrib/[YOUR_MODULE] --dry-run</code><br>
-        <code>vendor/bin/rector process web/themes/custom/fus --dry-run</code><br></li>
+        <code>vendor/bin/rector process ./web/modules/contrib/[YOUR_MODULE] --dry-run</code><br>
+        <code>vendor/bin/rector process ./web/themes/custom/fus --dry-run</code><br></li>
 
         <li><a href="https://www.palantir.net/rector" target="_blank">Palantir Drupal rector</a></li>
 
@@ -154,7 +154,7 @@
           <li><input type="checkbox" />Favicon checken: <img src="/sites/default/files/favicons/favicon-32x32.png?={{ random() }}" alt="" width="32" height="32"></li>
 
           <li><input type="checkbox" />fus.library.yml: remove scss/_development.scss &amp; ggf. blog.css<br>
-          <code>gsed -i '/\@import \"development\"\;/d' web/themes/custom/fus/scss/styles.scss && open web/themes/custom/fus/scss/styles.scss</code></li>
+          <code>gsed -i '/\@import \"development\"\;/d' ./web/themes/custom/fus/scss/styles.scss && open ./web/themes/custom/fus/scss/styles.scss</code></li>
 
           <li><input type="checkbox" /><a href="/admin/config/media/responsive-image-style" target="_blank">Check Responsive Image Styles</a><br>
           <a href="/admin/config/media/responsive-image-style/banner" target="_blank">Banner</a>: <code>(min-width:1400px) 1400px, 100vw</code><br>
@@ -162,7 +162,7 @@
 
           <li><input type="checkbox" /><a href="/admin/structure/block/block-content" target="_blank">Check genutzte Blöcke</a></li>
 
-          <li><input type="checkbox" /><a href="/admin/config/search/custom-company-token" target="_blank">Check Custom Company Tokens</a></li>
+          <li><input type="checkbox" /><a href="/admin/config/content/custom-company-token" target="_blank">Check Custom Company Tokens</a></li>
 
           <li><input type="checkbox" /><a href="/admin/structure/block/manage/mobilecontact" target="_blank">Check Block „Mobile Contact“</a></li>
 
@@ -197,7 +197,7 @@
           <li><input type="checkbox" /><a href="/admin/reports/auditfiles/managednotused" target="_blank">Audit Files</a></li>
 
           <li><input type="checkbox" /><a href="/admin/reports/auditfiles/managednotused" target="_blank">Remove unused files from server</a><br>
-            <code>open web/sites/default/files</code></li>
+            <code>open ./web/sites/default/files</code></li>
 
           <li><input type="checkbox" /><a href="/admin/content/files" target="_blank">Check files (clear cache)</a></li>
 
@@ -292,7 +292,7 @@
         <li><input type="checkbox" /><code>drush image-flush --all</code></li>
 
         <li><input type="checkbox" />Zip folders:<br />
-          <code>find . -name '.DS_Store' -type f -delete && zip -r assets web/modules/custom web/themes patches web/libraries web/sites/default/files -x "**/.DS_Store" -x "**/__MACOSX" -x "**/.zip" -x "web/libraries/superfish" -x "web/sites/default/files/languages/*" -x "web/sites/default/files/php/*" -x "web/sites/default/files/styles/*" -x "**/.ddev" -x "**/.code-workspace"</code></li>
+          <code>find . -name '.DS_Store' -type f -delete && zip -r assets ./web/modules/custom ./web/themes patches ./web/libraries ./web/sites/default/files -x "**/.DS_Store" -x "**/__MACOSX" -x "**/.zip" -x "web/libraries/superfish" -x "web/sites/default/files/languages/*" -x "web/sites/default/files/php/*" -x "web/sites/default/files/styles/*" -x "**/.ddev" -x "**/.code-workspace"</code></li>
 
         <li><input type="checkbox" />Export Database mit (mySqlAdmin) und ohne (Drush import) Komprimierung via Drush: <code>drush cr && drush sql-dump --structure-tables-list=cache,cache_* --gzip --result-file=../db-file.sql && drush sql-dump --structure-tables-list=cache,cache_* --result-file=../db-file.sql && open ./</code><br>
         <a href="http://localhost/phpMyAdmin5/index.php?route=/server/databases">Export Database manually:</a><br />
@@ -376,7 +376,7 @@
         <li><input type="checkbox" />Change .htaccess – Comment out Favicon:<br>
         <code>sed -i "s/ RewriteCond %{REQUEST_URI} !=\/favicon.ico/ # RewriteCond %{REQUEST_URI} !=\/favicon.ico/" ./web/.htaccess</code></li>
 
-        <li>Remove <i>index.html</i> if <i>index.php</i> exists: <code>rm web/index.html</code></li>
+        <li>Remove <i>index.html</i> if <i>index.php</i> exists: <code>rm ./web/index.html</code></li>
 
         <li><input type="checkbox" />Webseite installieren: <code>drush site:install</code> oder im Browser</li>
 
@@ -397,8 +397,8 @@
         </li>
 
 
-        <li><input type="checkbox" />Settings anpassen: web/sites/default/settings.php<br />
-        <code>chmod 777 web/sites/default/settings.php</code><br>
+        <li><input type="checkbox" />Settings anpassen: ./web/sites/default/settings.php<br />
+        <code>chmod 777 ./web/sites/default/settings.php</code><br>
           506 $settings['<code>file_private_path</code>'] = <code>$app_root . '/../private'</code>;<br />
           $settings['<code>config_sync_directory</code>'] = <code>$app_root . '/../config/sync'</code>;<br>
           700 <code>$settings['trusted_host_patterns']</code><br>
@@ -406,7 +406,7 @@
               'isolation_level' => 'SET SESSION TRANSACTION ISOLATION LEVEL READ COMMITTED',
             ],</code></li>
 
-        <li><code>chmod 440 web/sites/default/settings.php</code></li>
+        <li><code>chmod 440 ./web/sites/default/settings.php</code></li>
 
         <li><input type="checkbox" />In der Webseite Updates-Skript aufrufen oder <code>php ./vendor/bin/drush updb</code></li>
 
@@ -438,7 +438,7 @@
           RewriteRule ^ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]</code></li>
 
         <li><input type="checkbox" />htaccess: Redirect &amp; GZip<br>
-          <code>open web/core/assets/scaffold/files/htaccess</code></li>
+          <code>open ./web/core/assets/scaffold/files/htaccess</code></li>
 
         <li><a href="/admin/config/system/cron" target="_blank">Cronjob extern anlegen</a><br>
         Webgo: Paketverwaltung -> CronJobs Light<br>
