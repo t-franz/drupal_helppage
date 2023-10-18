@@ -45,6 +45,9 @@
       <h4>Design:</h4>
       <ul>
 
+        <li><input type="checkbox" />Startseiten-Banner entfernen: <a href="/admin/content/block/1/delete" target="_blank">/admin/content/block/1/delete</a><br>
+        Styles entfernen: <code>gsed -i '/\@import \"banner\"\;/d' ./web/themes/custom/fus/scss/styles.scss && gsed -i '/\@import \"gradient\"\;/d' ./web/themes/custom/fus/scss/styles.scss</code></li>
+
         <li><input type="checkbox" />Branding-Block Twig – Add Width/ Height of 2xLogo &amp; 1x Mobile Logo:<br>
           <code>open ./web/themes/custom/fus/templates/block--system-branding-block.html.twig</code></li>
 
@@ -62,7 +65,7 @@
 
   <details class="js-form-wrapper form-wrapper claro-details" id="enable-description0" data-once="details">
     <summary aria-controls="enable-description0" role="button" aria-expanded="true" class="claro-details__summary" aria-pressed="true">
-      <h3>Update to D10</h3>
+      <h3>Update to D10/D11</h3>
     </summary>
     <div class="claro-details__wrapper">
       <ul>
@@ -74,7 +77,9 @@
         add css/classy/*.css
         </li>
 
-        <li><input type="checkbox" />Install <a href="https://www.drupal.org/project/update_status">Update Status</a> and <a href="/admin/reports/upgrade-status" target="_blank">Check Update Status</a></li>
+        <li>Uninstall "Allowed Formats": <code>drush pmu allowed_formats && composer remove drupal/allowed_formats</code></li>
+
+        <li><input type="checkbox" />Install <a href="https://www.drupal.org/project/upgrade_status">Upgrade Status</a> and <a href="/admin/reports/upgrade-status" target="_blank">Check Upgrade Status</a></li>
 
         <li><input type="checkbox" />Install <a href="https://www.drupal.org/project/upgrade_rector">Upgrade Rector</a> <a href="https://www.drupal.org/project/upgrade_rector/issues/3322943">(Patch for alpha8)</a> and <a href="/admin/reports/upgrade-rector" target="_blank">Upgrade with rector</a> oder (auch ohne Patch):<br>
         <code>vendor/bin/rector process ./web/modules/contrib/[YOUR_MODULE] --dry-run</code><br>
@@ -211,7 +216,7 @@
           <li><input type="checkbox" /><a href="/admin/modules/uninstall" target="_blank">Uninstall Modules</a><br>
             Audit Files, Devel, Config Delete, Field UI, Views UI, Database Logging, Download Folder, Upgrade Status<br>
             Configuration Manager<br>
-            <code>drush pmu devel auditfiles</code><br>
+            <code>drush pmu devel auditfiles upgrade_status</code><br>
             <code>composer remove drupal/devel drupal/devel_kint_extras drupal/auditfiles drupal/upgrade_status</code></li>
 
           <li><input type="checkbox" /><a href="/admin/reports/dblog/confirm" target="_blank" >Clear Database Log</a></li>
@@ -293,6 +298,8 @@
 
           <li><a href="https://www.drupal.org/project/responsive_image_preload">Responsive Image Preload</a></li>
 
+          <li><a href="https://www.drupal.org/project/critical_css">Critical CSS</a></li>
+
         </ul>
       </div>
   </details>
@@ -311,7 +318,7 @@
         <li><input type="checkbox" />Zip folders:<br />
           <code>find . -name '.DS_Store' -type f -delete && zip -r assets ./web/modules/custom ./web/themes patches ./web/libraries ./web/sites/default/files -x "**/.DS_Store" -x "**/__MACOSX" -x "**/.zip" -x "web/libraries/superfish" -x "web/sites/default/files/languages/*" -x "web/sites/default/files/php/*" -x "web/sites/default/files/styles/*" -x "**/.ddev" -x "**/.code-workspace"</code></li>
 
-        <li><input type="checkbox" />Export Database mit (mySqlAdmin) und ohne (Drush import) Komprimierung via Drush: <code>drush cr && drush sql-dump --structure-tables-list=cache,cache_* --gzip --result-file=../db-file.sql && drush sql-dump --structure-tables-list=cache,cache_* --result-file=../db-file.sql && open ./</code><br>
+        <li><input type="checkbox" />Export Database mit (phpMyAdmin) und ohne (Drush import) Komprimierung via Drush: <code>drush cr && drush sql-dump --structure-tables-list=cache,cache_* --gzip --result-file=../db-file.sql && drush sql-dump --structure-tables-list=cache,cache_* --result-file=../db-file.sql && open ./</code><br>
         <a href="http://localhost/phpMyAdmin5/index.php?route=/server/databases">Export Database manually:</a><br />
           Clear Cache<br />
           Datenbank auswählen (oben in Reiter!) -&gt;<br />
@@ -392,8 +399,7 @@
 
         <li><input type="checkbox" /><code>unzip -o assets.zip</code> („Replace All“)</li>
 
-        <li><input type="checkbox" /><code>composer require drush/drush</code>
-        <li>
+        {# <li><input type="checkbox" /><code>composer require drush/drush</code><li> #}
 
         <li><input type="checkbox" />Check Drush: <code>drush status</code> oder <code>php ./vendor/bin/drush status</code></li>
 
@@ -410,7 +416,8 @@
         <li><input type="checkbox" />Webhosting: Datenbank auswählen -&gt; Importieren</li>
 
         <li><input type="checkbox" />Import Database via phpMyAdmin or via Drush:<br>
-        <code>php ./vendor/bin/drush sql-drop -y && php ./vendor/bin/drush sqlc < ./db-file.sql</code> (non-zipped file)</li>
+        <code>drush sql-drop -y && drush sqlc < ./db-file.sql && drush cr</code> (non-zipped file)<br>
+        <code>php ./vendor/bin/drush sql-drop -y && php ./vendor/bin/drush sqlc < ./db-file.sql && php ./vendor/bin/drush cr</code> (non-zipped file)</li>
 
         <li>Fehler "<i>ERROR>  1273 (HY000)>  at line 25: Unknown collation: 'utf8mb4_0900_ai_ci</i>'"? Replace collation:<br>
         <code>sed -i '' 's/utf8mb4_0900_ai_ci/utf8_general_ci/g' ./db-file.sql</code><br>
@@ -426,18 +433,14 @@
 
         <li><input type="checkbox" />Settings anpassen: ./web/sites/default/settings.php ('sed' is not allowed on remote)<br />
         <code>chmod 777 ./web/sites/default/settings.php</code><br>
-          506 $settings['<code>file_private_path</code>'] = <code>$app_root . '/../private';</code><br />
-          $settings['<code>config_sync_directory</code>'] = <code>$app_root . '/../config/sync';</code><br>
-          700 <code>$settings['trusted_host_patterns']</code><br>
-          End of Database <code>'init_commands' => [
-              'isolation_level' => 'SET SESSION TRANSACTION ISOLATION LEVEL READ COMMITTED',
-            ],</code></li>
+        Change <i>trusted_host_patterns</i>:</br>
+        <code>printf "\$settings['config_sync_directory'] = \$app_root . '/../config/sync';\n\$settings['file_private_path'] = \$app_root . '/../private';\n\$settings['trusted_host_patterns'] = [\n   '^DOMAIN\.de\$',\n   '^.+\.DOMAIN\.de\$',\n];" >> ./web/sites/default/settings.php</code></li>
 
         <li><code>chmod 440 ./web/sites/default/settings.php</code></li>
 
         <li><input type="checkbox" />In der Webseite Updates-Skript aufrufen oder <code>php ./vendor/bin/drush updb</code></li>
 
-        <li>Local &amp; Remote: <code>rm assets.zip db-file.sql db-file.sql.gz</code></li>
+        <li>Local &amp; Remote: <code>rm assets.zip db-file.sql db-file.sql.gz</code> (ignore "No such file-"error) </li>
 
          <li><input type="checkbox" /><a href="/admin/config/media/file-system" target="_blank">Check Private Filesystem</a>: <i>{{privatepath}}</i></li>
 
@@ -459,6 +462,7 @@
     </summary>
     <div class="claro-details__wrapper">
       <ul>
+       <li><input type="checkbox" /><a href="/admin/config/development/settings" target="_blank">Entwicklungseinstellungen deaktivieren</a></li>
 
         <li><input type="checkbox" />htaccess redirect to https:<br>
           <code>RewriteCond %{HTTPS} !=on<br>
@@ -522,7 +526,9 @@
 
         <li><a href="https://www.drupal.org/project/lunr">Lunr Search</a></li>
 
-        <li><a href="https://www.drupal.org/project/easy_install" target="_blank">Easy Install</a> to purge orphan configurations</a></li>
+        <li><a href="https://www.drupal.org/project/easy_install" target="_blank">Easy Install</a> to purge orphan configurations</li>
+
+        <li><a href="https://www.drupal.org/project/stage_file_proxy" target="_blank">Stage File Proxy</a></li>
       </ul>
     </div>
   </details>
